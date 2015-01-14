@@ -3,6 +3,7 @@
   <groupId>org.autoadmin.sl</groupId>
   <artifactId>SL-AutoFrame</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
   <name>SL_Frame</name>  
   	  	<properties>
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
