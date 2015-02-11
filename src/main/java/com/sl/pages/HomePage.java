@@ -1,19 +1,11 @@
 package com.sl.pages;
+import java.lang.reflect.Field;
 
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-import com.sl.menu.BannersMP;
-import com.sl.menu.BroadcastChannelMP;
-import com.sl.menu.InterfaceIdMP;
-import com.sl.menu.InterfaceMenuItemMP;
-import com.sl.menu.KaraokeMP;
-import com.sl.menu.PromoActionsMP;
-import com.sl.menu.PromoSheduleMP;
-import com.sl.menu.VideomoviesMP;
-import com.sl.menu.VodPackageMP;
 
 public class HomePage extends Page{
 	
@@ -36,90 +28,108 @@ public class HomePage extends Page{
 	@FindBy(css="[href='VodPackage/list']")
 	protected WebElement vodPackage;
 	
-	public HomePage(WebDriver driver) {		
-		super(driver);
-		PageFactory.initElements(driver, this);
+	@FindBy(css="[id='ListFilters'] [id='row.name']")
+	protected WebElement name;	
+	@FindBy(css="[class='btn btn-primary'][ng-click='refresh()']")
+	protected WebElement refresh;
+	@FindBy(css="[class='btn btn-primary'][ng-click='onCopyRow()']")
+	protected WebElement copy;
+	@FindBy(css="[class='btn btn-primary'][ng-click='addRow()']")																	
+	protected WebElement addCard;	
+	@FindBy(css="[class='btn btn-primary'][ng-click='switchBulkMode(!bulkMode)']")																	
+	protected WebElement bulkMode;	
+	
+	public HomePage(PageManager pageManager) {
+		super(pageManager);
+		
+	}	
+	
+	public enum Menu{
+		KARAOKE("karaoke"),
+		PROMOACTIONS("promoAction"),
+		PROMOCONTENT("promoContent"),
+		PROMOSHEDULE("promoSchedule"),
+		PROMOINTERFACEID("promoInterfaceId"),
+		INTERFACEMENUITEM("interfaceMenuItem"),
+		BROADCASTCHANNEL("broadcastChannel"),
+		VIDEOMOVIE("videoMovie"),
+		VODPACKAGE("vodPackage");
+		Menu(String text){
+			this.text = text;
+		}
+		public String text;
+		
+	}	
+	
+	
+	public HomePage setName(String value){
+		type(name, value);
+		return this;		
+	}	
+	public void openExistValue(String value){
+		driver.findElement(By.cssSelector("[title='"+value+"'] a")).click();
 		
 	}
-
-	public BannersMP openBanners(){
-		
-		js.clickOnInvisibleElement(promoContent);
-	
-		return new BannersMP(driver);
-			}
-	
-	public PromoSheduleMP openPromoShedule(){
-		
-		js.clickOnInvisibleElement(promoSchedule);
-	
-		return new PromoSheduleMP(driver);
-			}
-	
-	public InterfaceIdMP openInterfaceId(){
-		
-		js.clickOnInvisibleElement(promoInterfaceId);
-	
-		return new InterfaceIdMP(driver);
-			}
-	
-	public InterfaceMenuItemMP openInterfaceMenuItem(){
-		
-		js.clickOnInvisibleElement(interfaceMenuItem);
-	
-		return new InterfaceMenuItemMP(driver);
-			}
-	
-	public PromoActionsMP openPromoActions(){
-		
-		js.clickOnInvisibleElement(promoAction);
-	
-		return new PromoActionsMP(driver);
-			}
-	
-public KaraokeMP openKaraoke(){
-		
-		js.clickOnInvisibleElement(karaoke);
-	
-		return new KaraokeMP(driver);
-			}
-
-public VideomoviesMP openVideoMovie(){
-	
-	js.clickOnInvisibleElement(videoMovie);
-
-	return new VideomoviesMP(driver);
-		}
-
-public BroadcastChannelMP openBroadcastChannel(){
-	
-	js.clickOnInvisibleElement(broadcastChannel);
-
-	return new BroadcastChannelMP(driver);
-		}
-
-public VodPackageMP openVodPackage(){
-	
-	js.clickOnInvisibleElement(vodPackage);
-
-	return new VodPackageMP(driver);
-		}
-
-	
-
-	
-	public LoginPage loggedOut (){
-		
-		return new LoginPage(driver);
-		
+	public HomePage refresh(){
+		refresh.click();
+		return this;		
+	}
+	public HomePage selectExistValue(String value){
+		driver.findElement(By.xpath("//*[@id='ListTableContainer']//tr[descendant::td[@title='"+value+"']]/td[@class='column-bool']")).click();
+		return this;
+	}
+	public void clickCopy(){
+		copy.click();		
 	}
 
-	
 
+	public void addForm() {
+		addCard.click();
+		
+	}
 	
 	
-
-
+	 public HomePage clickPage(Menu menu){
+			Field[] allFields = this.getClass().getDeclaredFields();			
+			for(Field field : allFields){
+				 
+				 if(field.getName().equals(menu.text)){
+					 WebElement element = null;
+					 try {
+						element = (WebElement) field.get(this);						
+						js.clickOnInvisibleElement(element);
+						System.out.println("");
+						if(isAlertPresent())
+							driver.switchTo().alert().accept();
+						return this;
+					} catch (IllegalArgumentException | IllegalAccessException e) {
+						e.printStackTrace();
+					}
+					 
+				 
+				 
+			 	}
+			} 
+			return  this;
+		}
+	 
+	 public HomePage ensurePageLoaded(){		 
+		 wfe.waitHomePage();
+		 return this;
+	 }
+	 
+	 private boolean isAlertPresent() 
+	 { 
+	     try 
+	     { 	        
+	    	 driver.switchTo().alert(); 
+	         return true; 
+	     }   
+	     catch (NoAlertPresentException Ex) 
+	     { 
+	         return false; 
+	     }  
+	 }
 
 
 	

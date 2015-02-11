@@ -1,207 +1,243 @@
 package com.sl.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-import com.sl.menu.BroadcastChannelMP;
-import com.sl.utils.List2Lists;
+import com.sl.model.User;
+import com.sl.popup.AudioPIDs;
+import com.sl.popup.DvbtURL;
+import com.sl.popup.MulticastGroup;
+import com.sl.popup.OttURL;
+import com.sl.popup.Subtitles;
+import com.sl.utils.Length;
 
-public class BroadcastChannel extends AnyForm{
+public class BroadcastChannel extends AnyForm {
+
+	@FindBy(css = "[id='RowForm'] [id='row.name']")
+	protected WebElement row_name;
+
+	@FindBy(css = "[id='RowForm'] [id='row.externalId']")
+	protected WebElement row_externalId;
+
+	@FindBy(css="[id='RowForm'] [name='row.description'] textarea")
+	protected WebElement row_description;
+
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.Locations']")
+	protected WebElement states_Locations;
 	
-	@FindBy(id = "row.number")
-	WebElement row_number;
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.AudioPIDs']")
+	protected WebElement states_AudioPIDs;
 
-	@FindBy(id = "row.name")
-	WebElement row_name;
+	@FindBy(css = "[id='RowForm'] [id='row.smExternalId']")
+	protected WebElement row_smExternalId;
 
-	@FindBy(css = "[id='s2id_row.accessLevel'] span")
-	WebElement row_accessLevel;
+	@FindBy(css = "[id='RowForm'] [id='row.isCrypted']")
+	protected WebElement row_isCrypted;
 
-	@FindBy(id = "row.viewPVRChannelID")
-	WebElement row_viewPVRChannelID;
+	@FindBy(css = "[id='RowForm'] [id='row.restrictTimeStart'] input")
+	protected WebElement row_restrictTimeStart;
 
-	@FindBy(id = "row.isBarker")
-	WebElement row_isBarker;
+	@FindBy(css = "[id='RowForm'] [id='row.restrictTimeEnd'] input")
+	protected WebElement row_restrictTimeEnd;
 
-	@FindBy(id = "row.isErotic")
-	WebElement row_isErotic;
+	@FindBy(css = "[id='RowForm'] [id='s2id_row.accessLevel'] span")
+	protected WebElement row_accessLevel;
 
-	@FindBy(id = "row.url")
-	WebElement row_url;
+	@FindBy(css = "[id='RowForm'] [id='row.isErotic']")
+	protected WebElement row_isErotic;
 
-	@FindBy(id = "row.hqUrl")
-	WebElement row_hqUrl;
+	@FindBy(css = "[id='RowForm'] [id='row.number']")
+	protected WebElement row_number;
 
-	@FindBy(id = "row.backupUrl1")
-	WebElement row_backupUrl1;
+	@FindBy(css = "[id='RowForm'] [id='row.viewPVRChannelID']")
+	protected WebElement row_viewPVRChannelID;
 
-	@FindBy(id = "row.backupUrl2")
-	WebElement row_backupUrl2;
+	@FindBy(css = "[id='RowForm'] [id='row.isBarker']")
+	protected WebElement row_isBarker;
 
-	@FindBy(id = "row.plcUrl")
-	WebElement row_plcUrl;
+	@FindBy(css = "[id='RowForm'] [id='row.url']")
+	protected WebElement row_url;
 
-	@FindBy(id = "row.pipUrl")
-	WebElement row_pipUrl;
+	@FindBy(css = "[id='RowForm'] [id='row.hqUrl']")
+	protected WebElement row_hqUrl;
 
-	@FindBy(id = "row.raptorPort")
-	WebElement row_raptorPort;
+	@FindBy(css = "[id='RowForm'] [id='row.backupUrl1']")
+	protected WebElement row_backupUrl1;
 
-	@FindBy(id = "row.ottDvr")
-	WebElement row_ottDvr;
+	@FindBy(css = "[id='RowForm'] [id='row.backupUrl2']")
+	protected WebElement row_backupUrl2;
 
-	@FindBy(id = "row.ottURL")
-	WebElement row_ottURL;
+	@FindBy(css = "[id='RowForm'] [id='row.plcUrl']")
+	protected WebElement row_plcUrl;
 
-	@FindBy(id = "row.tstvOttURL")
-	WebElement row_tstvOttURL;
+	@FindBy(css = "[id='RowForm'] [id='row.pipUrl']")
+	protected WebElement row_pipUrl;
 
-	@FindBy(id = "row.plOttURL")
-	WebElement row_plOttURL;
+	@FindBy(css = "[id='RowForm'] [id='row.raptorPort']")
+	protected WebElement row_raptorPort;
 
-	@FindBy(id = "row.promoUrl")
-	WebElement row_promoUrl;
+	@FindBy(css = "[id='RowForm'] [id='row.ottDvr']")
+	protected WebElement row_ottDvr;
 
-	@FindBy(id = "row.smlOttURL")
-	WebElement row_smlOttURL;
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.ChannelOttUrlOverrides']")
+	protected WebElement states_ChannelOttUrlOverrides;
 
-	@FindBy(css = "[id='s2id_row.videoServerProtocol'] span")
-	WebElement row_videoServerProtocol;
+	@FindBy(css = "[id='RowForm'] [id='row.tstvOttURL']")
+	protected WebElement row_tstvOttURL;
 
-//	@FindBy(id = "row.epgOffset")
-//	WebElement row_epgOffset;
+	@FindBy(css = "[id='RowForm'] [id='row.plOttURL']")
+	protected WebElement row_plOttURL;
 
-	@FindBy(id = "row.tstvDuration")
-	WebElement row_tstvDuration;
+	@FindBy(css = "[id='RowForm'] [id='row.promoUrl']")
+	protected WebElement row_promoUrl;
 
-	@FindBy(id = "row.segmentDuration")
-	WebElement row_segmentDuration;
+	@FindBy(css = "[id='RowForm'] [id='row.smlOttURL']")
+	protected WebElement row_smlOttURL;
 
-	@FindBy(id = "row.nPVRChannelID")
-	WebElement row_nPVRChannelID;
+	@FindBy(css = "[id='RowForm'] [id='s2id_row.videoServerProtocol'] span")
+	protected WebElement row_videoServerProtocol;
 
-	@FindBy(id = "row.tstvType")
-	WebElement row_tstvType;
+	@Length(24)
+	@FindBy(css = "[id='RowForm'] [id='row.epgOffset']")
+	protected WebElement row_epgOffset;
 
-	@FindBy(id = "row.isNpvrEnabled")
-	WebElement row_isNpvrEnabled;
+	@FindBy(css = "[id='RowForm'] [id='row.tstvDuration']")
+	protected WebElement row_tstvDuration;
 
-	@FindBy(id = "row.isPauseLifeEnabled")
-	WebElement row_isPauseLifeEnabled;
+	@FindBy(css = "[id='RowForm'] [id='row.segmentDuration']")
+	protected WebElement row_segmentDuration;
 
-	@FindBy(id = "row.isQualityMonitoring")
-	WebElement row_isQualityMonitoring;
+	@FindBy(css = "[id='RowForm'] [id='row.isQualityMonitoring']")
+	protected WebElement row_isQualityMonitoring;
 
-	@FindBy(id = "row.isTestStreamQuality")
-	WebElement row_isTestStreamQuality;
+	@FindBy(css = "[id='RowForm'] [id='row.isTestStreamQuality']")
+	protected WebElement row_isTestStreamQuality;	
 
-	@FindBy(css = "[id='s2id_row.type'] span")
-	WebElement row_typeTV;
+	@FindBy(css = "[id='RowForm'] [id='row.soundVolume']")
+	protected WebElement row_soundVolume;
 
-	@FindBy(css = "[id='s2id_row.page'] span")
-	WebElement row_page;
+	@FindBy(css = "[id='RowForm'] [id='row.isDvrCrypted']")
+	protected WebElement row_isDvrCrypted;
 
-	@FindBy(css = "[id='s2id_row.containerType'] span")
-	WebElement row_containerTypeMPEG;
+	@FindBy(css = "[id='RowForm'] [id='row.dvbtChannelName']")
+	protected WebElement row_dvbtChannelName;
 
-	@FindBy(id = "row.transcoding")
-	WebElement row_transcoding;
+	@FindBy(css = "[id='RowForm'] [id='row.repChannelName']")
+	protected WebElement row_repChannelName;
 
-	@FindBy(css = "[id='row.restrictTimeStart'] input")
-	WebElement row_restrictTimeStart;
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.SmartRecorders']")
+	protected WebElement states_smartRecorders;
 
-	@FindBy(css = "[id='row.restrictTimeEnd'] input")
-	WebElement row_restrictTimeEnd;
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.ChannelPackages']")
+	protected WebElement states_channelPackages;
 
-	@FindBy(id = "row.soundVolume")
-	WebElement row_soundVolume;
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.ChannelSubjects']")
+	protected WebElement states_channelSubjects;
 
-	@FindBy(id = "row.isCrypted")
-	WebElement row_isCrypted;
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.ChannelRestrictLocations']")
+	protected WebElement states_channelRestrictLocations;
 
-	@FindBy(id = "row.isDvrCrypted")
-	WebElement row_isDvrCrypted;
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.ChannelInStbFunction']")
+	protected WebElement states_channelInStbFunction;
 
-	@FindBy(id = "row.bitrate")
-	WebElement row_bitrate;
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.ChannelInNetworkType']")
+	protected WebElement states_channelInNetworkType;	
+	
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.SubtitlePIDs']")
+	protected WebElement states_SubtitlePIDs;
+	
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.ChannelUrlOverrides']")
+	protected WebElement states_ChannelUrlOverrides;
+	
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.DVBtUrls']")
+	protected WebElement states_DVBtUrls;
+	
+	@FindBy(css = "[id='RowForm'] [id='row.nPVRChannelID']")
+	protected WebElement row_nPVRChannelID;
 
-	@FindBy(id = "row.externalId")
-	WebElement row_externalId;
+	@FindBy(css = "[id='RowForm'] [id='row.tstvType']")
+	protected WebElement row_tstvType;
 
-	@FindBy(id = "row.smExternalId")
-	WebElement row_smExternalId;
+	@FindBy(css = "[id='RowForm'] [id='row.isNpvrEnabled']")
+	protected WebElement row_isNpvrEnabled;
 
-	@FindBy(id = "row.dvbtChannelName")
-	WebElement row_dvbtChannelName;
+	@FindBy(css = "[id='RowForm'] [id='row.isPauseLifeEnabled']")
+	protected WebElement row_isPauseLifeEnabled;	
 
-	@FindBy(id = "row.repChannelName")
-	WebElement row_repChannelName;
-
-	@FindBy(css="[name='row.description'] textarea")
-	WebElement row_description;
-		
-	@FindBy(css = "section[name='row.__states.SmartRecorders']")
-	WebElement states_smartRecorders;
-
-	@FindBy(css = "section[name='row.__states.ChannelPackages']")
-	WebElement states_channelPackages;
-
-	@FindBy(css = "section[name='row.__states.ChannelSubjects']")
-	WebElement states_channelSubjects;
-
-	@FindBy(css = "section[name='row.__states.Locations']")
-	WebElement states_Locations;
-
-	@FindBy(css = "section[name='row.__states.ChannelRestrictLocations']")
-	WebElement states_channelRestrictLocations;
-
-	@FindBy(css = "section[name='row.__states.ChannelInStbFunction']")
-	WebElement states_channelInStbFunction;
-
-	@FindBy(css = "section[name='row.__states.ChannelInNetworkType']")
-	WebElement states_channelInNetworkType;
-
-
-	public BroadcastChannel(WebDriver driver) {
-		super(driver);
-		PageFactory.initElements(driver, this);
+	@FindBy(css = "[id='RowForm'] [id='row.bitrate']")
+	protected WebElement row_bitrate2;	
+	
+	public BroadcastChannel(PageManager pageManager) {
+		super(pageManager);		
 	}
 	
-	public void setName(String value) {
+	public BroadcastChannel setName(String value) {
 		type(row_name, value);
-		name = value;
-		
+		User.setNameForm(value);
+		return this;		
 	}
 	
-	public void setNumber(String value){		
+	public BroadcastChannel setNumber(String value){		
 		type(row_number, value);
+		return this;
 		
 	}
 	
-	public void setLocations(String value) {
-		insideTab(states_Locations);
-		List2Lists list2list = new List2Lists(states_Locations, driver);
-		list2list.addValue(value);
+	public BroadcastChannel setLocations(String value) {
+		pageManager.getList2List(states_Locations).addValue(value);
+		return this;
+	}		
+	
+	public AudioPIDs addAudioPID() {	
+		pageManager.getLinkedList(states_AudioPIDs).add();
+		return pageManager.audioPIDs;
+	}
+
+	public AudioPIDs openAudioPID(String value) {
+		pageManager.getLinkedList(states_AudioPIDs).openValueLink(value);
+		return pageManager.audioPIDs;
 		
 	}
 	
+	public Subtitles addSubtitles(){
+		pageManager.getLinkedList(states_SubtitlePIDs).add();
+		return pageManager.subtitles;
+	}
 	
-	public BroadcastChannelMP saveAndClose(){
-		
-		footerForm.saveAndClose();
-		return new BroadcastChannelMP(driver);
+	public Subtitles openSubtitles(String value){
+		pageManager.getLinkedList(states_SubtitlePIDs).openValueLink(value);
+		return pageManager.subtitles;
+	}
+
+	public MulticastGroup openMulticastGroup(String value) {
+		pageManager.getLinkedList(states_ChannelUrlOverrides).openValueLink(value);
+		return pageManager.multicastGroup;
 		
 	}
 
-	public BroadcastChannelMP addAndClose() {
+	public MulticastGroup addMulticastGroup() {
+		pageManager.getLinkedList(states_ChannelUrlOverrides).add();
+		return pageManager.multicastGroup;
+		
+	}
 	
+	public OttURL addOttURL(){
+		pageManager.getLinkedList(states_ChannelOttUrlOverrides).add();
+		return pageManager.ottUrl;
+	}
 	
-	footerForm.createAndClose();
-
-	return new BroadcastChannelMP(driver);
+	public OttURL openOttURL(String value){
+		pageManager.getLinkedList(states_ChannelOttUrlOverrides).openValueLink(value);
+		return pageManager.ottUrl;
+	}
 	
-}
+	public DvbtURL addDvbtURL(){
+		pageManager.getLinkedList(states_DVBtUrls).add();
+		return pageManager.dvbtUrl;
+	}
+	public DvbtURL openDvbtURL(String value){
+		pageManager.getLinkedList(states_DVBtUrls).openValueLink(value);
+		return pageManager.dvbtUrl;
+	}
 
 }

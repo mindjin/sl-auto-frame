@@ -2,82 +2,50 @@ package com.sl.pages;
 
 //import org.hibernate.sql.Select;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
-
-import com.sl.data.UserData;
 
 public class LoginPage extends Page{
 
 	@FindBy(id = "row.login") 																			
-	  WebElement login; 
+	protected  WebElement login; 
 	
 	@FindBy(id = "row.password")																			
-	  WebElement password;	
+	protected  WebElement password;	
 	
 	@FindBy(id="btnSignIn")												
-	  WebElement buttonAutorization;
+	protected  WebElement buttonAutorization;
 	
-	@FindBy(css = "[value='row.language']")
-	  WebElement row_language;
+	@FindBy(css = "[value='row.language'] span")
+	protected  WebElement row_language;
 	
-	
-	public LoginPage(WebDriver driver) {
-		super(driver);
-		PageFactory.initElements(driver, this);
-		// TODO Auto-generated constructor stub
+	public LoginPage(PageManager pageManager) {
+		super(pageManager);
+		
 	}
-
-
-	private String text;
 	
+	public LoginPage setLogin(String value){
+		type(login, value);
+		return this;
+	}
 	
-	public HomePage loginAs(UserData userData){
-		text = userData.login;
-		System.out.println(login.getText());
-		type(login, text);
-		type(password, userData.pass);
+	public LoginPage setPassword(String value){
+		type(password, value);
+		return this;
+	}
+	
+	public void clickButtonAutorization(){
 		buttonAutorization.click();
-		return new HomePage(driver);
 	}
-
-
-	public void fillLogin(String text) {
-		type(login, text);
-		this.text = text;
+	
+	public void setLanguage(String value){
+		pageManager.getCombobox(row_language).findValue(value);		
 		
 	}
-
-	public String getLogin(){
-		return text;
-	}
-
-	public void Language(String value){
-//		WebElement.class.newInstance().
-		Select select = new Select(row_language);
-		select.selectByValue("English");
-		System.out.println("");
-//		(row_language, value);
-	}
-
-
-	public boolean isLoggin() {
+	
+	public boolean isLogginVisible(){		
+		return isElementPresent(By.id("loginModal"));	
 		
-		boolean checkLoggin = isElementPresent(By.id("btnSignIn"));
-		return checkLoggin;
-	}
-	
-
-	
-
-
-
-
-	
-
-
+	}	
 	
 }

@@ -1,31 +1,34 @@
 package com.sl.utils;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class Checkbox {
-	
-	WebDriver driver;
-	public Checkbox(WebDriver driver){
-		this.driver = driver;
+import com.sl.pages.Page;
+import com.sl.pages.PageManager;
+
+public class Checkbox extends Page {
+	private WebElement element;
+	public Checkbox(PageManager pageManager, WebElement element) {
+		super(pageManager);		
+		this.element = element;
+		insideTab(element);
 	}
 	
-public void editCheckbox(WebElement name, String value){
+public void editCheckbox(String value){
 		
-		if(name != null){
+		if(element != null){
 			
 			if(value.equals("1"))
 			{
-				if(!name.isSelected()){
+				if(!element.isSelected()){
 				
-					name.click();
+					element.click();
 			}
 
 			}
 			if(value.equals("0"))
-				if(name.isSelected())
+				if(element.isSelected())
 				
-					name.click();
+					element.click();
 		}
 }
 

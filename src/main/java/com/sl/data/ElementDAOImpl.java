@@ -40,9 +40,9 @@ public class ElementDAOImpl implements ElementDAO {
 		return elements;
 	}
 	
-	public Element getSearchItem(String nameField){
+	public String getSearchItem(String nameField){
 		Session session = null;
-		Element element = null;
+		String value = null;
 		List<Element> elements = new ArrayList<Element>();
 		
 		try{
@@ -51,9 +51,9 @@ public class ElementDAOImpl implements ElementDAO {
 			elements = session.createCriteria(Element.class).list();
 			
 			for(Element el : elements){
-				if(el.getName().equals(nameField)){
-					element = el;
-					return element;
+				if(el.getNameVariable().equals(nameField)){
+					value = el.getValue();
+					return value;
 				
 				}
 			}
@@ -70,7 +70,7 @@ public class ElementDAOImpl implements ElementDAO {
 		
 		}
 		
-		return element;
+		return value;
 		
 		
 	}

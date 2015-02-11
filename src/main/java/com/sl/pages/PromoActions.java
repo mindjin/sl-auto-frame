@@ -1,130 +1,78 @@
 package com.sl.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-import com.sl.menu.KaraokeMP;
-import com.sl.menu.PromoActionsMP;
-import com.sl.utils.FooterForm;
+import com.sl.model.User;
 
-public class PromoActions extends AnyForm{
+public class PromoActions extends AnyForm {	
 	
 	@FindBy(css="[id='RowForm'] [id='row.name']")
-	 WebElement row_name;	
+	 protected WebElement row_name;	
 	
-	@FindBy(css="[id='row.sortOrder']")
-	 WebElement row_sortOrder;
+	@FindBy(css="[id='RowForm'] [id='row.sortOrder']")
+	 protected WebElement row_sortOrder;
 	
-	@FindBy(css="[id='row.overloadServiceSpecParams']")
-	 WebElement row_overloadServiceSpecParams;
+	@FindBy(css="[id='RowForm'] [id='row.overloadServiceSpecParams']")
+	 protected WebElement row_overloadServiceSpecParams;
 	
-	@FindBy(id="row.externalId")
-	 WebElement row_externalId;
+	@FindBy(css ="[id='RowForm'] [id='row.externalId']")
+	 protected WebElement row_externalId;
 	
-	@FindBy(css = "[name='row.startDate'] input")
-	 WebElement row_startDate;
+	@FindBy(css = "[id='RowForm'] [name='row.startDate'] input")
+	 protected WebElement row_startDate;
 	
-	@FindBy(css = "[name='row.endDate'] input")
-	 WebElement row_endDate;
+	@FindBy(css = "[id='RowForm'] [name='row.endDate'] input")
+	 protected WebElement row_endDate;
 	
-	@FindBy(id="row.duration")
-	 WebElement row_duration;
+	@FindBy(css ="[id='RowForm'] [id='row.duration']")
+	 protected WebElement row_duration;
 	
-	@FindBy(css = "[id='s2id_row.durationType'] span")
-	 WebElement row_durationType;
+	@FindBy(css = "[id='RowForm'] [id='s2id_row.durationType'] span")
+	 protected WebElement row_durationType;
 	
-	@FindBy(css = "[id='row.startMessage'] ul")
-	 WebElement row_startMessage;
+	@FindBy(css = "[id='RowForm'] [id='row.startMessage'] ul")
+	 protected WebElement row_startMessage;
 	
-	@FindBy(css = "[id='row.notifyThreshold']")
-	 WebElement row_notifyThreshold;
+	@FindBy(css = "[id='RowForm'] [id='row.notifyThreshold']")
+	 protected WebElement row_notifyThreshold;
 	
-	@FindBy(id="row.notifyTimeout")
-	 WebElement row_notifyTimeout;
+	@FindBy(css ="[id='RowForm'] [id='row.notifyTimeout']")
+	 protected WebElement row_notifyTimeout;
 	
-	@FindBy(id="row.isCheckUserInFilter")
-	 WebElement row_isCheckUserInFilter;
+	@FindBy(css ="[id='RowForm'] [id='row.isCheckUserInFilter']")
+	 protected WebElement row_isCheckUserInFilter;
 	
-	@FindBy(css = "[id='row.description'] textarea")
-	 WebElement row_description;
+	@FindBy(css = "[id='RowForm'] [id='row.description'] textarea")
+	 protected WebElement row_description;
 	
-	@FindBy(css = "[id='row.notifyStartText'] textarea")
-	 WebElement row_notifyStartText;
+	@FindBy(css = "[id='RowForm'] [id='row.notifyStartText'] textarea")
+	 protected WebElement row_notifyStartText;
 	
-	@FindBy(css = "[id='row.notifyText'] textarea")
-	 WebElement row_notifyText;
+	@FindBy(css = "[id='RowForm'] [id='row.notifyText'] textarea")
+	 protected WebElement row_notifyText;
 	
-//	@FindBy(css="section[name='row.__states.ServiceSpecs']")
-//	 WebElement row_serviceSpecs;
+//	@FindBy(css="[id='RowForm'] section[name='row.__states.ServiceSpecs']")
+//	 protected WebElement row_serviceSpecs;
 	
-	@FindBy(css="section[name='row.__states.MessageFilters']")
-	 WebElement states_messageFilters;
+	@FindBy(css="[id='RowForm'] section[name='row.__states.MessageFilters']")
+	 protected WebElement states_messageFilters;
 	
 
-
-	
-//	HashMap<Integer, WebElement> allElements = new HashMap<>();
-	
-	
-	private String sorting;
-
-	public PromoActions(WebDriver driver) {
-		super(driver);
-		PageFactory.initElements(driver, this);
+	public PromoActions(PageManager pageManager) {
+		super(pageManager);	
 	}
-
 	
-
-	public void setName(String value) {
+	public PromoActions setName(String value) {
 		type(row_name, value);
-		name = value;
+		User.setNameForm(value);
+		return this;
 	}
 
-	public void setSorting(String value) {
-		type(row_sortOrder, value);
+	public PromoActions setSorting(String value) {
+		type(row_sortOrder, value);	
+		return this;
 		
-		sorting = value;
 	}
 	
-	
-	
-	public String getSorting(){
-		return sorting;
-	}
-	
-	/*
-	 * Take values from Table and verify every one with array variables
-	 */
-
-	
-
-
-public PromoActionsMP addAndClose() {
-	FooterForm button = new FooterForm(driver);
-	
-	button.createAndClose();
-
-	return new PromoActionsMP(driver);
-	
-}
-
-
-
-
-
-public PromoActionsMP saveAndClose(){
-	
-	footerForm.saveAndClose();
-	return new PromoActionsMP(driver);
-	
-}
-
-
-
-
-
-
-
 }

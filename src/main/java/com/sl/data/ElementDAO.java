@@ -11,6 +11,6 @@ public interface ElementDAO {
 	
 	public void addField(Element element) throws SQLException;
 	
-	public Element getSearchItem(String nameField);
+	public String getSearchItem(String nameField);
 
 }

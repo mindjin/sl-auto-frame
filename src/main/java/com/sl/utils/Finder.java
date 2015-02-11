@@ -1,42 +1,45 @@
 package com.sl.utils;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-import com.sl.pages.AnyForm;
+import com.sl.pages.Page;
+import com.sl.pages.PageManager;
 
-public class Finder extends AnyForm{
+public class Finder extends Page {
 	
-	@FindBy (xpath="//*[@additional-view][last()]//*[@id='row.name']")																//*
-	public WebElement row_name;
+	WebElement element;
 	
-	@FindBy (xpath="//*[@additional-view][last()]//*[@class='btn pull-right']")																//*
-	public WebElement btnCreate;
-	
-	@FindBy(xpath="//*[@additional-view][last()]//*[@class='slider container-fluid in']/button")
-	protected WebElement openFilter;
-	
-	
-	public Finder(WebDriver driver){
-		super(driver);
-		PageFactory.initElements(driver, this);
+	public Finder(PageManager pageManager) {
+		super(pageManager);		
+		incPopup();
+		element = driver.findElement(By.xpath("//*[@additional-view][last()]//*[@id='row.name']"));
 	}
 	
-	public void add(WebElement element, String value){
-		element.click();
-		wfe.waitCounter();
-		addPopup();		
-		openFilter.click();
-		type(row_name, value);
-		driver.findElement(By.cssSelector("[value='row.name'][title='"+value+"']")).click();
-		btnCreate.click();
-		closePopup();
-		
+	public Finder setName(String value){
+		if(element.isDisplayed()){
+			type(element, value);
+			element.sendKeys(Keys.ENTER);}
+		else{
+			System.out.println("");
+			openFilter();
+			type(element, value);
+			element.sendKeys(Keys.ENTER);
+		}
+		return this;
 	}
-
-	
+	public void clickOk(){
+		driver.findElement(By.xpath("//*[@additional-view][last()]//*[@class='btn pull-right'][1]")).click();		
+		decPopup();
+	}
+	private Finder openFilter(){
+		driver.findElement(By.cssSelector("[class='slider container-fluid in'] button")).click();
+		return this;
+	}	
+	public Finder selectExistValue(String value){
+		driver.findElement(By.cssSelector("[value='row.name'][title='"+value+"'] a")).click();		
+		return this;		
+	}
 
 }

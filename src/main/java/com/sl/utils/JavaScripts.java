@@ -9,9 +9,10 @@ public class JavaScripts {
 	
 	JavascriptExecutor executor;																
 	WebDriver driver;
-	public JavaScripts(WebDriver driver) {															
-		this.executor  = (JavascriptExecutor)driver;												
-			this.driver = driver;
+	public JavaScripts(WebDriver driver) {	
+		this.driver = driver;
+		this.executor  = (JavascriptExecutor)driver;										
+			
 		}
 	
 	public void clickOnInvisibleElement(WebElement element) {

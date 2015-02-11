@@ -1,226 +1,312 @@
 package com.sl.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-import com.sl.menu.KaraokeMP;
-import com.sl.menu.VideomoviesMP;
-import com.sl.utils.List2Lists;
+import com.sl.popup.Assets;
+import com.sl.popup.AssetsOTT;
+import com.sl.popup.AudioPID;
+import com.sl.popup.ContentContracts;
+import com.sl.popup.ContentInPurchaseM;
+import com.sl.popup.OttPreviewAssets;
+import com.sl.popup.PreviewAssets;
 
 public class Videomovies extends AnyForm{
 	
-	@FindBy(id = "row.name")
+	@FindBy(css = "[id='RowForm'] [id='row.name']")
 	WebElement row_name;
 
-	@FindBy(id = "row.year")
+	@FindBy(css = "[id='RowForm'] [id='row.year']")
 	WebElement row_year;
 
-	@FindBy(id = "row.director")
+	@FindBy(css = "[id='RowForm'] [id='row.director']")
 	WebElement row_director;
 
-	@FindBy(id = "row.actors")
+	@FindBy(css = "[id='RowForm'] [id='row.actors']")
 	WebElement row_actors;
 
-	@FindBy(css = "[id='row.startDate'] input")
+	@FindBy(css = "[id='RowForm'] [id='row.startDate'] input")
 	WebElement row_startDate;
 
-	@FindBy(css = "[id='row.endDate'] input")
+	@FindBy(css = "[id='RowForm'] [id='row.endDate'] input")
 	WebElement row_endDate;
 
-	@FindBy(css = "[id = 'row.premiereStartDate'] input")
+	@FindBy(css = "[id='RowForm'] [id = 'row.premiereStartDate'] input")
 	WebElement row_premiereStartDate;
 
-	@FindBy(css = "[id = 'row.premiereEndDate'] input")
+	@FindBy(css = "[id='RowForm'] [id = 'row.premiereEndDate'] input")
 	WebElement row_premiereEndDate;
 
-	@FindBy(id = "row.newDays")
+	@FindBy(css = "[id='RowForm'] [id='row.newDays']")
 	WebElement row_newDays;
 
-	@FindBy(css = "section[name='row.__states.countries']")
-	WebElement states_countries;
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.countries']")
+	WebElement states_countries;	
 
-	@FindBy(css = "section[name='row.__states.Billets']")
-	WebElement states_billets;
-
-	@FindBy(id = "row.reviewTitle")
+	@FindBy(css = "[id='RowForm'] [id='row.reviewTitle']")
 	WebElement row_reviewTitle;
 
-	@FindBy(css = "[id='row.reviewDate'] input")
+	@FindBy(css = "[id='RowForm'] [id='row.reviewDate'] input")
 	WebElement row_reviewDate;
 
-	@FindBy(css = "[id = 'row.review'] textarea")
+	@FindBy(css = "[id='RowForm'] [id = 'row.review'] textarea")
 	WebElement row_review;
+	
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.ContentAssets']")
+	protected  WebElement states_ContentAssets;
+	
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.OttContentAssets']")
+	protected  WebElement states_OttContentAssets;	
+	
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.PreviewAssets']")
+	protected  WebElement states_PreviewAssets;
+	
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.OttPreviewAssets']")
+	protected  WebElement states_OttPreviewAssets;
+	
+	@FindBy (css ="[id='RowForm'] section[name='row.__states.ContentAudioPIDs']")																//*
+	protected WebElement states_ContentAudioPIDs;
 
-	@FindBy(css = "section[name='row.__states.Genres']")
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.Genres']")
 	 WebElement states_Genres;
 
-	@FindBy(css = "section[name='row.__states.VodPackages']")
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.VodPackages']")
 	WebElement states_vodPackages;
 
-	@FindBy(css = "section[name='row.__states.EstVodPackages']")
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.EstVodPackages']")
 	WebElement states_estVodPackages;
 
-	@FindBy(css = "section[name='row.__states.VodGroups']")
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.VodGroups']")
 	WebElement states_vodGroups;
 
-	@FindBy(css = "section[name='row.__states.Locations']")
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.Locations']")
 	WebElement states_Locations;
+	
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.ContentContracts']")
+	protected WebElement states_ContentContracts;
 
-	@FindBy(css = "section[name='row.__states.LicenseType2']")
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.LicenseType2']")
 	WebElement states_LicenseType2;
 
-	@FindBy(css = "[id='s2id_row.categoryABCDE'] span")
+	@FindBy(css = "[id='RowForm'] [id='s2id_row.categoryABCDE'] span")
 	 WebElement row_categoryABCDE;
 
-	@FindBy(id = "row.originalLang")	
+	@FindBy(css = "[id='RowForm'] [id='row.originalLang']")	
 	WebElement row_originalLang;
 
-	@FindBy(id = "row.isDubbedNeeded")
+	@FindBy(css = "[id='RowForm'] [id='row.isDubbedNeeded']")
 	WebElement row_isDubbedNeeded;
 
-	@FindBy(id = "row.dubbedInfo")
+	@FindBy(css = "[id='RowForm'] [id='row.dubbedInfo']")
 	WebElement row_dubbedInfo;
 
-	@FindBy(css = "[id='s2id_row.contractProgramType'] span")
+	@FindBy(css = "[id='RowForm'] [id='s2id_row.contractProgramType'] span")
 	WebElement row_contractProgramType;
 
-	@FindBy(id = "row.licenseYear")
+	@FindBy(css = "[id='RowForm'] [id='row.licenseYear']")
 	WebElement row_licenseYear;
 
-	@FindBy(css = "section[name='row.__states.ContentBundles']")
-	WebElement states_ContentBundles;
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.ContentBundles']")
+	WebElement states_ContentBundles;	
+	
+	@FindBy(css = "[id='RowForm'] section[name='row.__states.ContentInPurchaseM']")
+	protected WebElement states_ContentInPurchaseM;	
+	
 
-	@FindBy(css="[id='row.restrictTimeStart'] input")
+	@FindBy(css="[id='RowForm'] [id='row.restrictTimeStart'] input")
 	WebElement row_restrictTimeStart;
 
-	@FindBy(css="[id='row.restrictTimeEnd'] input")
+	@FindBy(css="[id='RowForm'] [id='row.restrictTimeEnd'] input")
 	WebElement row_restrictTimeEnd;
 
-	@FindBy(id = "row.originalName")
+	@FindBy(css = "[id='RowForm'] [id='row.originalName']")
 	WebElement row_originalName;
 
-	@FindBy(css = "[id='s2id_row.accessLevel'] span")
+	@FindBy(css = "[id='RowForm'] [id='s2id_row.accessLevel'] span")
 	WebElement row_accessLevel;
 
-	@FindBy(css = "[id='s2id_row.ageLevel'] span")
+	@FindBy(css = "[id='RowForm'] [id='s2id_row.ageLevel'] span")
 	WebElement row_ageLevel;
 
-	@FindBy(css = "[id='s2id_row.genre'] span")
+	@FindBy(css = "[id='RowForm'] [id='s2id_row.genre'] span")
 	WebElement row_genre;
 
-	@FindBy(id = "row.rating")
-	WebElement row_rating;
+//	@FindBy(css = "[id='RowForm'] [id='row.rating']")
+//	WebElement row_rating;
 
-	@FindBy(id = "row.KinopoiskRating")
+	@FindBy(css = "[id='RowForm'] [id='row.KinopoiskRating']")
 	WebElement row_KinopoiskRating;
 
-	@FindBy(id = "row.kinopoiskId")
+	@FindBy(css = "[id='RowForm'] [id='row.kinopoiskId']")
 	WebElement row_kinopoiskId;
 
-	@FindBy(id = "row.imdbRating")
+	@FindBy(css = "[id='RowForm'] [id='row.imdbRating']")
 	WebElement row_imdbRating;
 
-	@FindBy(id="row.item")
+	@FindBy(css ="[id='RowForm'] [id='row.item']")
 	WebElement row_item;
 
-	@FindBy(id = "row.appleId")
+	@FindBy(css = "[id='RowForm'] [id='row.appleId']")
 	WebElement row_appleId;
 
-	@FindBy(id = "row.androidId")
+	@FindBy(css = "[id='RowForm'] [id='row.androidId']")
 	WebElement row_androidId;
 
-	@FindBy(id = "row.smarttvId")
+	@FindBy(css = "[id='RowForm'] [id='row.smarttvId']")
 	WebElement row_smarttvId;
 
-	@FindBy(css = "[id='s2id_row.type3d'] span")
+	@FindBy(css = "[id='RowForm'] [id='s2id_row.type3d'] span")
 	WebElement row_type3d;
 
-	@FindBy(id = "row.adminDsc")
+	@FindBy(css = "[id='RowForm'] [id='row.adminDsc']")
 	WebElement row_adminDsc;
 
-	@FindBy(css = "[id='s2id_row.showcase'] span")
+	@FindBy(css = "[id='RowForm'] [id='s2id_row.showcase'] span")
 	WebElement row_showcase;
 
-	@FindBy(css = "[id='s2id_row.bonusPriceCategory'] span")
+	@FindBy(css = "[id='RowForm'] [id='s2id_row.bonusPriceCategory'] span")
 	WebElement row_bonusPriceCategory;
 
-	@FindBy(id="row.distributionCertificate")
+	@FindBy(css ="[id='RowForm'] [id='row.distributionCertificate']")
 	WebElement row_distributionCertificate;
+	
+	@FindBy(css ="[id='RowForm'] [id='row.ownerId']")
+	WebElement row_ownerId;
 
-	@FindBy(css="[name='row.description'] textarea")
+	@FindBy(css ="[id='RowForm'] [name='row.description'] textarea")
 	WebElement row_description;
 		
-	@FindBy(id = "row.isCrypted")
+	@FindBy(css = "[id='RowForm'] [id='row.isCrypted']")
 	public WebElement row_isCrypted;
 
-	@FindBy(id = "row.isRecommended")
+	@FindBy(css = "[id='RowForm'] [id='row.isRecommended']")
 	WebElement row_isRecommended;
 
-	@FindBy(id = "row.ottRecomended")
+	@FindBy(css = "[id='RowForm'] [id='row.ottRecomended']")
 	WebElement row_ottRecomended;
 
-	@FindBy(id = "row.deleteOnEndDate")
+	@FindBy(css = "[id='RowForm'] [id='row.deleteOnEndDate']")
 	WebElement row_deleteOnEndDate;
 
-	@FindBy(id = "row.notifySub")
+	@FindBy(css = "[id='RowForm'] [id='row.notifySub']")
 	WebElement row_notifySub;
 
-	@FindBy(id = "row.showAsVod")
+	@FindBy(css = "[id='RowForm'] [id='row.showAsVod']")
 	WebElement row_showAsVod;
 
-	@FindBy(id = "row.isErotic")
+	@FindBy(css = "[id='RowForm'] [id='row.isErotic']")
 	WebElement row_isErotic;
 
-	@FindBy(id = "row.isNextEpisode")
+	@FindBy(css = "[id='RowForm'] [id='row.isNextEpisode']")
 	WebElement row_isNextEpisode;
 
-	@FindBy(id = "row.deleteEst")
+	@FindBy(css = "[id='RowForm'] [id='row.deleteEst']")
 	WebElement row_deleteEst;
-
-	public Videomovies(WebDriver driver) {
-		super(driver);
-		PageFactory.initElements(driver, this);
-		
+	
+	@FindBy(css = "[id='RowForm'] [id='row.isLastEpisode']")
+	WebElement row_isLastEpisode;
+	
+	
+	public Videomovies(PageManager pageManager) {
+		super(pageManager);
 	}
 	
-	public void setName(String value) {
+	public Videomovies setName(String value) {
 		type(row_name, value);
-		name = value;
-		
+			return this;	
 	}
 	
-	public void setLocations(String value) {
-		insideTab(states_Locations);
-		List2Lists list2list = new List2Lists(states_Locations, driver);
-		list2list.addValue(value);
-		
+	public Videomovies setLocations(String value) {
+		pageManager.getList2List(states_Locations).addValue(value);
+		return this;	
 	}
 	
-	public void setSeason(String value) {
-		insideTab(states_ContentBundles);
-		List2Lists list2list = new List2Lists(states_ContentBundles, driver);
-		list2list.addValue(value);
-		
+	public Videomovies setStartDate(String value){
+		type(row_startDate, value);
+		return this;
 	}
 	
-public VideomoviesMP saveAndClose(){
-		
-		footerForm.saveAndClose();
-		return new VideomoviesMP(driver);
-		
+	public Videomovies setEndDate(String value){
+		type(row_endDate, value);
+		return this;
+	}
+	
+	public Videomovies setSeason(String value) {
+		pageManager.getList2List(states_ContentBundles).addValue(value);
+		return this;	
+	}
+	
+	public AssetsOTT addAssertsOTT(){
+		pageManager.getLinkedList(states_OttContentAssets).add();
+		return pageManager.assetsOTT;
 	}
 
-public VideomoviesMP addAndClose() {
-	
-	
-	footerForm.createAndClose();
 
-	return new VideomoviesMP(driver);
+	public Assets addAssets(){		
+		pageManager.getLinkedList(states_ContentAssets).add();
+		return pageManager.assets;
+	}
 	
-}
+	public Assets openAsset(String value){
+		insideTab(states_ContentAssets);
+		pageManager.getLinkedList(states_ContentAssets).openValueLink(value);
+		return pageManager.assets;
+		
+	}
 	
+	public AssetsOTT openAssetOTT(String value){
+		pageManager.getLinkedList(states_OttContentAssets).openValueLink(value);
+		return pageManager.assetsOTT;		
+	}
 	
+	public PreviewAssets openPreviewAssets(String value){
+		pageManager.getLinkedList(states_PreviewAssets).openValueLink(value);
+		return pageManager.previewAssets;
+	}
+	
+	public OttPreviewAssets openOttPreviewAssets(String value){
+		pageManager.getLinkedList(states_OttPreviewAssets).openValueLink(value);
+		return pageManager.ottPreviewAssets;
+	}
+	
+	public AudioPID openAudioPID(String value){
+		pageManager.getLinkedList(states_ContentAudioPIDs).openValueLink(value);
+		return pageManager.audioPID;
+	}
+	
+	public ContentContracts openContentContracts(String value){
+		pageManager.getLinkedList(states_ContentContracts).openValueSpan(value);
+		return pageManager.contentContracts;
+	}
+	
+	public ContentInPurchaseM openContentInPurchaseM(String value){
+		pageManager.getLinkedList(states_ContentInPurchaseM).openValueLink(value);
+		return pageManager.contentInPurchaseM;
+	}
+	
+	public PreviewAssets addPreviewAssets(){		
+		pageManager.getLinkedList(states_PreviewAssets).add();
+		return pageManager.previewAssets;
+	}
+	
+	public OttPreviewAssets addOttPreviewAssets(){
+		pageManager.getLinkedList(states_OttPreviewAssets).add();
+		return pageManager.ottPreviewAssets;
+	}
+	
+	public AudioPID addAudioPID(){		
+		pageManager.getLinkedList(states_ContentAudioPIDs).add();
+		return pageManager.audioPID;
+	}
+	
+	public ContentContracts addContentContracts(){
+		pageManager.getLinkedList(states_ContentContracts).add();
+		return pageManager.contentContracts;
+	}
+	
+	public ContentInPurchaseM addContentInPurchaseM(){
+		pageManager.getLinkedList(states_ContentInPurchaseM).add();
+		return pageManager.contentInPurchaseM;
+	}
 
 }
