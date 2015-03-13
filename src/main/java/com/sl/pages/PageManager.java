@@ -14,6 +14,7 @@ import com.sl.popup.ContentContracts;
 import com.sl.popup.ContentInPurchaseM;
 import com.sl.popup.Delete;
 import com.sl.popup.DvbtURL;
+import com.sl.popup.LinkedId;
 import com.sl.popup.MulticastGroup;
 import com.sl.popup.OttPreviewAssets;
 import com.sl.popup.OttURL;
@@ -49,7 +50,9 @@ public enum Form{
 	PREVIEWASSETS("previewAssets"),
 	OTTPREVIEWASSETS("ottPreviewAssets"),
 	CONTENTINPURCHASEM("contentInPurchaseM"),
-	CONTENTCONTRACTS("contentContracts");
+	CONTENTCONTRACTS("contentContracts"),
+	SEASONS("seasons"),
+	SERIALS("serials");
 		Form(String text){
 			this.text = text;
 		}
@@ -77,6 +80,9 @@ public PreviewAssets previewAssets;
 public OttPreviewAssets ottPreviewAssets;
 public ContentInPurchaseM contentInPurchaseM;
 public ContentContracts contentContracts;
+public Seasons seasons;
+public RentalWindows rentalWindows;
+public Serials serials;
 
 public HomePage homePage;
 public ParamCopy paramCopy;
@@ -87,6 +93,8 @@ private List2List list2List;
 private Combobox combobox;
 private Checkbox checkbox;
 private LinkedList linkedList;
+private LinkedId linkedId;
+
 
 
 
@@ -115,6 +123,9 @@ private LinkedList linkedList;
 		ottPreviewAssets = initElements(new OttPreviewAssets(this));
 		contentInPurchaseM = initElements(new ContentInPurchaseM(this));
 		contentContracts = initElements(new ContentContracts(this));
+		seasons = initElements(new Seasons(this));
+		rentalWindows = initElements(new RentalWindows(this));
+		serials = initElements(new Serials(this));
 	}
 	
 	
@@ -150,9 +161,14 @@ private LinkedList linkedList;
 			  return linkedList;
 		  }
 		  
-		  public Finder getFinder(){
-			  finder = new Finder(this);
+		  public Finder getFinder(WebElement element){
+			  finder = new Finder(this, element);
 			  return finder;
+		  }
+		  
+		  public LinkedId getLinkeId(WebElement element){
+			  linkedId = new LinkedId(this, element);
+			  return linkedId;
 		  }
 		  
 		  

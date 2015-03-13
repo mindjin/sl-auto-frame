@@ -3,6 +3,7 @@ package com.sl.popup;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import com.sl.model.ContentInPurchaseMDB;
 import com.sl.pages.AnyForm;
 import com.sl.pages.PageManager;
 
@@ -39,6 +40,21 @@ public class ContentInPurchaseM extends AnyPopup{
 	public AnyForm create(){		
 		addPopup();
 		return this;
+	}
+	
+	public ContentInPurchaseM fillForm(ContentInPurchaseMDB contentInPurchase){
+		setComboboxKeys(row_purchaseMethod, contentInPurchase.getPurchaseMethod());
+		setTextfieldKeys(row_sort, contentInPurchase.getSort());
+		
+		return this;
+	}
+	
+	public ContentInPurchaseMDB readForm(){
+		ContentInPurchaseMDB contentInPurchase = new ContentInPurchaseMDB();
+		contentInPurchase.setPurchaseMethod(insideTab(row_purchaseMethod).getText());
+		contentInPurchase.setSort(insideTab(row_sort).getAttribute("value"));
+		return contentInPurchase;
+		
 	}
 
 }

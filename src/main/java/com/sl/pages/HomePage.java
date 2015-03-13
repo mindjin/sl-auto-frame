@@ -27,6 +27,10 @@ public class HomePage extends Page{
 	protected WebElement videoMovie;
 	@FindBy(css="[href='VodPackage/list']")
 	protected WebElement vodPackage;
+	@FindBy(css="[href='ContentBundle/list']")
+	protected WebElement contentBundle;
+	@FindBy(css="[href='Series/list']")
+	protected WebElement series;
 	
 	@FindBy(css="[id='ListFilters'] [id='row.name']")
 	protected WebElement name;	
@@ -53,7 +57,9 @@ public class HomePage extends Page{
 		INTERFACEMENUITEM("interfaceMenuItem"),
 		BROADCASTCHANNEL("broadcastChannel"),
 		VIDEOMOVIE("videoMovie"),
-		VODPACKAGE("vodPackage");
+		VODPACKAGE("vodPackage"), 
+		SEASONS("contentBundle"),
+		SERIALS("series");
 		Menu(String text){
 			this.text = text;
 		}
@@ -92,13 +98,20 @@ public class HomePage extends Page{
 	 public HomePage clickPage(Menu menu){
 			Field[] allFields = this.getClass().getDeclaredFields();			
 			for(Field field : allFields){
-				 
+				try{
+				if(ws.getPC()>=0) 
+					throw new Exception();}
+				catch(Exception e){
+					driver.navigate().refresh();
+					if(isAlertPresent())
+						driver.switchTo().alert().accept();
+					ws.defPC();					
+				}
 				 if(field.getName().equals(menu.text)){
 					 WebElement element = null;
 					 try {
 						element = (WebElement) field.get(this);						
 						js.clickOnInvisibleElement(element);
-						System.out.println("");
 						if(isAlertPresent())
 							driver.switchTo().alert().accept();
 						return this;

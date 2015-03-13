@@ -12,7 +12,9 @@ import com.sl.pages.PageManager;
 public class ConfigBase {
 	protected ApplicationManager app;
 	protected PageManager pageManager;
-	private User user = new User().setLogin("admin").setPassword("admin");
+	private User user = new User()
+	.setLogin(ConfigProperties.getProperty("login"))
+	.setPassword(ConfigProperties.getProperty("password"));
 	protected String rndNum = null;
 	
 	

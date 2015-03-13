@@ -3,6 +3,7 @@ package com.sl.popup;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import com.sl.model.OttPreviewAssetsDB;
 import com.sl.model.User;
 import com.sl.pages.AnyForm;
 import com.sl.pages.PageManager;
@@ -64,6 +65,31 @@ public class OttPreviewAssets extends AnyPopup {
 	public AnyForm create(){		
 		addPopup();
 		return this;
+	}
+	
+	public OttPreviewAssets fillForm(OttPreviewAssetsDB ottPreviewAssets) {
+		setTextfieldKeys(row_name, ottPreviewAssets.getName());
+		setTextfieldKeys(row_containerType, ottPreviewAssets.getContainerType());
+		setTextfieldKeys(row_bitrate, ottPreviewAssets.getBitrate());
+		setTextfieldKeys(row_containerType, ottPreviewAssets.getContainerType());
+		setTextfieldKeys(row_durationTime, ottPreviewAssets.getDurationTime());
+		setComboboxKeys(row_status, ottPreviewAssets.getStatus());
+		setCheckboxKeys(row_isCrypted, ottPreviewAssets.getIsCrypted());
+		setComboboxKeys(row_transport, ottPreviewAssets.getTransport());	
+		return this;		
+	}
+	
+	public OttPreviewAssetsDB readForm() {
+		OttPreviewAssetsDB ottPreviewAssets = new OttPreviewAssetsDB();
+		ottPreviewAssets.setName(insideTab(row_name).getAttribute("value"));
+		ottPreviewAssets.setContainerType(insideTab(row_containerType).getAttribute("value"));
+		ottPreviewAssets.setBitrate(insideTab(row_bitrate).getAttribute("value"));
+		ottPreviewAssets.setContainerType(insideTab(row_containerType).getAttribute("value"));
+		ottPreviewAssets.setDurationTime(insideTab(row_durationTime).getAttribute("value"));
+		ottPreviewAssets.setStatus(insideTab(row_status).getText());
+		ottPreviewAssets.setIsCrypted(pageManager.getCheckbox(row_isCrypted).getStatus());
+		ottPreviewAssets.setTransport(insideTab(row_transport).getText());		
+		return ottPreviewAssets;		
 	}
 
 }

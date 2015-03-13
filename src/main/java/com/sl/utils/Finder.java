@@ -9,36 +9,38 @@ import com.sl.pages.PageManager;
 
 public class Finder extends Page {
 	
-	WebElement element;
+	protected WebElement row_name;
 	
-	public Finder(PageManager pageManager) {
-		super(pageManager);		
+	public Finder(PageManager pageManager, WebElement element) {
+		super(pageManager);	
+		element.click();
 		incPopup();
-		element = driver.findElement(By.xpath("//*[@additional-view][last()]//*[@id='row.name']"));
+		row_name = driver.findElement(By.xpath("//*[@additional-view][last()]//*[@id='row.name']"));
 	}
 	
+
 	public Finder setName(String value){
-		if(element.isDisplayed()){
-			type(element, value);
-			element.sendKeys(Keys.ENTER);}
+		if(row_name.isDisplayed()){
+			type(row_name, value);
+			row_name.sendKeys(Keys.ENTER);}
 		else{
-			System.out.println("");
 			openFilter();
-			type(element, value);
-			element.sendKeys(Keys.ENTER);
+			wfe.waitElementsVisible(row_name);
+			type(row_name, value);
+			row_name.sendKeys(Keys.ENTER);
 		}
 		return this;
 	}
 	public void clickOk(){
-		driver.findElement(By.xpath("//*[@additional-view][last()]//*[@class='btn pull-right'][1]")).click();		
+		driver.findElement(By.xpath("//*[@additional-view][last()]//*[@name='btnOk']")).click();		
 		decPopup();
 	}
 	private Finder openFilter(){
-		driver.findElement(By.cssSelector("[class='slider container-fluid in'] button")).click();
+		driver.findElement(By.id("btnFilterBrowseList")).click();
 		return this;
 	}	
 	public Finder selectExistValue(String value){
-		driver.findElement(By.cssSelector("[value='row.name'][title='"+value+"'] a")).click();		
+		driver.findElement(By.xpath("//*[@additional-view][last()]//*[@value='row.name'][@title='"+value+"']/a")).click();		
 		return this;		
 	}
 

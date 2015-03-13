@@ -3,6 +3,7 @@ package com.sl.popup;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import com.sl.model.AssetsDB;
 import com.sl.model.User;
 import com.sl.pages.AnyForm;
 import com.sl.pages.PageManager;
@@ -42,10 +43,10 @@ public class Assets extends AnyPopup{
 	@FindBy (xpath="//*[@additional-view][last()]//*[@id='s2id_row.transport']//span")																
 	protected WebElement row_transport;
 	
-	@FindBy (xpath="//*[@additional-view][last()]//section[@name='row.__states.AvalabiltyOnVideoServers']")																//*
+	@FindBy (xpath="//*[@additional-view][last()]//section[@name='row.__states.AvalabiltyOnVideoServers']")																
 	protected WebElement states_AvalabiltyOnVideoServers;
 	
-	@FindBy (xpath="//*[@additional-view][last()]//section[@name='row.__states.ContentAudioPIDs']")																//*
+	@FindBy (xpath="//*[@additional-view][last()]//section[@name='row.__states.ContentAudioPIDs']")																
 	protected WebElement states_ContentAudioPIDs;
 	
 	public Assets(PageManager pageManager) {
@@ -54,7 +55,6 @@ public class Assets extends AnyPopup{
 	
 	public Assets setName(String value) {
 		type(row_name, value);
-		User.setNameForm(value);
 		return this;
 	}
 	
@@ -82,4 +82,69 @@ public class Assets extends AnyPopup{
 		return this;
 	}
 
+	public Assets fillForm(AssetsDB assets) {
+		setTextfieldKeys(row_name, assets.getName());
+		setTextfieldKeys(row_smExternalId, assets.getSmExternalId());
+		setComboboxKeys(row_assetType, assets.getAssetType());
+		setTextfieldKeys(row_bitrate, assets.getBitrate());
+		setTextfieldKeys(row_containerType, assets.getContainerType());
+		setTextfieldKeys(row_durationTime, assets.getDurationTime());
+		setComboboxKeys(row_status, assets.getStatus());
+		setComboboxKeys(row_priority, assets.getPriority());
+		setCheckboxKeys(row_isCrypted, assets.getIsCrypted());
+		setCheckboxKeys(row_isDeleted, assets.getIsDeleted());
+		setComboboxKeys(row_transport, assets.getTransport());
+		setList2listKeys(states_AvalabiltyOnVideoServers, assets.getAvalabiltyOnVideoServers());		
+		return this;		
+	}
+	
+	public AssetsDB readForm() {
+		AssetsDB assets = new AssetsDB();
+		assets.setName(insideTab(row_name).getAttribute("value"));
+		assets.setSmExternalId(insideTab(row_smExternalId).getAttribute("value"));
+		assets.setAssetType(insideTab(row_assetType).getText());
+		assets.setBitrate(insideTab(row_bitrate).getAttribute("value"));
+		assets.setContainerType(insideTab(row_containerType).getAttribute("value"));
+		assets.setDurationTime(insideTab(row_durationTime).getAttribute("value"));
+		assets.setStatus(insideTab(row_status).getText());
+		assets.setPriority(insideTab(row_priority).getText());
+		assets.setIsCrypted(pageManager.getCheckbox(row_isCrypted).getStatus());
+		assets.setIsDeleted(pageManager.getCheckbox(row_isDeleted).getStatus());
+		assets.setTransport(insideTab(row_transport).getText());
+		assets.setAvalabiltyOnVideoServers(pageManager.getList2List(states_AvalabiltyOnVideoServers).getValue());		
+		return assets;		
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

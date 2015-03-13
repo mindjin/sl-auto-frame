@@ -11,7 +11,7 @@ public abstract class AnyPopup extends AnyForm {
 	@FindBy (xpath="//*[@additional-view][last()]//*[@ng-click='addRow(row)']")																
 	private WebElement addPopup;
 	
-	@FindBy (xpath="//*[@additional-view][last()]//*[@ng-click='closePopUp()']")																
+	@FindBy (xpath="//*[@additional-view][last()]//*[@name='btnCancel']")																
 	private WebElement closePopup;
 	
 	@FindBy (xpath="//*[@additional-view][last()]//*[@ng-click='saveRow(row)']")																

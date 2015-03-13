@@ -16,15 +16,17 @@ import com.sl.pages.PageManager.Form;
 import com.sl.utils.List2List;
 
 import static org.junit.Assert.assertTrue;
+
+
+
+
 public class FormHelper extends DriverBasedHelper{
-
-
 	
 	public FormHelper(ApplicationManager applicationManager){
 		super(applicationManager.getWebDriver());		
 	}
 	
-	@Step("Fill form")
+	@Deprecated
 public AnyForm fillForm(List<Element> getElement, Form form){	
 		AnyForm page = pageManager.getPage(form);
 		WebElement element = null;
@@ -83,8 +85,8 @@ public AnyForm fillForm(List<Element> getElement, Form form){
 							.addValue(value);
 							break;
 						case "finder":
-							element.click();		
-							pageManager.getFinder()
+									
+							pageManager.getFinder(element)
 							.setName(value)
 							.selectExistValue(value)
 							.clickOk();										
@@ -103,7 +105,7 @@ public AnyForm fillForm(List<Element> getElement, Form form){
 		return page;
 }
 
-@Step("Verify form")
+	@Deprecated
 	public void verifyForm(List<Element> getElement, Form form){
 		AnyForm page = pageManager.getPage(form);
 		WebElement element = null;
@@ -151,14 +153,14 @@ public AnyForm fillForm(List<Element> getElement, Form form){
 							if(value.equals("1"))
 								assertTrue("Checkbox "+line.getName()+" is not selected",element.isSelected());
 							if(value.equals("0"))
-								assertTrue("Checkbox "+line.getName()+" is selected",!element.isSelected());
+								assertTrue("Checkbox "+line.getName()+" is selected",element.isSelected());
 							break;
-						case "date":
-							assertTrue(line.getName()+" not equal "+value,element.getAttribute("value").equals(value));
-							break;
-						case "time":
-							assertTrue(line.getName()+" not equal "+value,element.getAttribute("value").equals(value));
-							break;
+//						case "date":
+//							assertTrue(line.getName()+" not equal "+value,element.getAttribute("value").equals(value));
+//							break;
+//						case "time":
+//							assertTrue(line.getName()+" not equal "+value,element.getAttribute("value").equals(value));
+//							break;
 						case "combobox":
 							assertTrue(line.getName()+" not equal "+value,element
 									.getText()

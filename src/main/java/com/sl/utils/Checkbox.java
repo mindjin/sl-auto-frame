@@ -32,4 +32,10 @@ public void editCheckbox(String value){
 		}
 }
 
+public String getStatus() {
+
+return element.isSelected()?"1":"0";
+
+}
+
 }

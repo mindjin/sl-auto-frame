@@ -43,6 +43,10 @@ public class WaitForElement{
 		}
 	}
 	
+
+	
+
+	
 	public void waitElementsVisible(WebElement waitOfElement){
 		(new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOf(waitOfElement));
 		
@@ -67,6 +71,8 @@ public class WaitForElement{
 			(new WebDriverWait(driver, 10)).until(ExpectedConditions.stalenessOf(driver.findElement((By.cssSelector("[additional-view='"+getPC+"']")))));	
 		
 	}
+
+	
 	
 	
 

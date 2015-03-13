@@ -3,6 +3,7 @@ package com.sl.popup;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import com.sl.model.ContentContractsDB;
 import com.sl.pages.AnyForm;
 import com.sl.pages.PageManager;
 
@@ -46,8 +47,7 @@ public class ContentContracts extends AnyPopup {
 	}
 	
 	public ContentContracts setContentContract(String value){
-		row_contentContract.click();
-		pageManager.getFinder().setName(value).selectExistValue(value).clickOk();
+		pageManager.getFinder(row_contentContract).setName(value).selectExistValue(value).clickOk();
 		return this;		
 	}
 	
@@ -62,6 +62,37 @@ public class ContentContracts extends AnyPopup {
 	public AnyForm create(){		
 		addPopup();
 		return this;
+	}
+	
+	public ContentContracts fillForm(ContentContractsDB contract){
+		setTextfieldKeys(row_startDate, contract.getStartDate());
+		setTextfieldKeys(row_endDate, contract.getEndDate());
+		setTextfieldKeys(contractInfo_vatSumm, contract.getVatSumm());
+		setTextfieldKeys(contractInfo_fixPaymentSumm, contract.getFixPaymentSumm());
+		setTextfieldKeys(contractInfo_minGarantySumm, contract.getMinGarantySumm());
+		setComboboxKeys(contractInfo_currency, contract.getCurrency());
+		setTextfieldKeys(contractInfo_royalty, contract.getRoyalty());
+		setComboboxKeys(contractInfo_contractor, contract.getContractor());
+		setCheckboxKeys(contractInfo_isContractBlockRules, contract.getIsContractBlockRules());
+		setCheckboxKeys(contractInfo_isLicenseExclusive, contract.getIsLicenseExclusive());
+		return this;
+	}
+	
+	public ContentContractsDB readForm(){
+		ContentContractsDB contract = new ContentContractsDB();
+		contract.setContentContract(insideTab(row_contentContract).getText());
+		contract.setStartDate(insideTab(row_startDate).getAttribute("value"));
+		contract.setEndDate(insideTab(row_endDate).getAttribute("value"));
+		contract.setVatSumm(insideTab(contractInfo_vatSumm).getAttribute("value"));
+		contract.setFixPaymentSumm(insideTab(contractInfo_fixPaymentSumm).getAttribute("value"));
+		contract.setMinGarantySumm(insideTab(contractInfo_minGarantySumm).getAttribute("value"));
+		contract.setCurrency(insideTab(contractInfo_currency).getText());
+		contract.setRoyalty(insideTab(contractInfo_royalty).getAttribute("value"));
+		contract.setContractor(insideTab(contractInfo_contractor).getText());
+		contract.setIsContractBlockRules(pageManager.getCheckbox(contractInfo_isContractBlockRules).getStatus());
+		contract.setIsLicenseExclusive(pageManager.getCheckbox(contractInfo_isLicenseExclusive).getStatus());
+		return contract;
+		
 	}
 	
 	

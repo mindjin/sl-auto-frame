@@ -60,18 +60,20 @@ public AnyForm save(){
 	save.click();
 	return this;
 }
-public void saveAndClose(){
+public HomePage saveAndClose(){
 	wfe.waitEnableButton(saveAndClose);
 	saveAndClose.click();
+	return pageManager.homePage.ensurePageLoaded();
 }
 public AnyForm create(){
 	wfe.waitEnableButton(create);
 	create.click();
 	return this;
 }
-public void createAndClose(){
+public HomePage createAndClose(){
 	wfe.waitEnableButton(createAndClose);
 	createAndClose.click();
+	return pageManager.homePage.ensurePageLoaded();
 }
 
 public AnyForm ensurePageLoaded() { 

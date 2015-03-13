@@ -3,6 +3,7 @@ package com.sl.popup;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import com.sl.model.AudioPidDB;
 import com.sl.model.User;
 import com.sl.pages.AnyForm;
 import com.sl.pages.PageManager;
@@ -46,6 +47,23 @@ public class AudioPID extends AnyPopup {
 	public AudioPID setPID(String value) {
 		type(row_PID, value);
 		return this;
+	}
+
+	public AudioPID fillForm(AudioPidDB audioPid) {
+		setTextfieldKeys(row_name, audioPid.getName());
+		setTextfieldKeys(row_PID, audioPid.getPID());
+		setComboboxKeys(row_audioPIDType, audioPid.getAudioPIDType());
+		return this;
+	}
+
+	public AudioPidDB readForm() {
+		AudioPidDB audioPidDB = new AudioPidDB();
+		audioPidDB.setName(insideTab(row_name).getAttribute("value"));
+		audioPidDB.setPID(insideTab(row_PID).getAttribute("value"));
+		audioPidDB.setAudioPIDType(insideTab(row_audioPIDType).getText());
+		return audioPidDB;
+		
+		
 	}
 
 }

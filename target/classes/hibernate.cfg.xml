@@ -5,7 +5,7 @@
 <hibernate-configuration>
   <session-factory>
     <property name="connection.driver_class">org.mariadb.jdbc.Driver</property>
-    <property name="connection.url">jdbc:mysql://localhost:3306/test</property>   
+    <property name="connection.url">jdbc:mysql://localhost:3306/test3</property>   
     <property name="connection.username">root</property>
     <property name="connection.password">123</property>
     <property name="connection.pool_size">10</property>
@@ -14,7 +14,27 @@
     <property name="hbm2ddl.auto">update</property>
     <property name="hibernate.connection.autocommit">false</property>
     <property name="current_session_context_class">thread</property>
-    <mapping class="com.sl.data.Element"/>
-    <mapping class="com.sl.data.Form"/>
+    <mapping class="com.sl.model.PromoactionsDB"/>
+    <mapping class="com.sl.model.KaraokeDB"/>
+    <mapping class="com.sl.model.AssetsDB"/>        
+    <mapping class="com.sl.model.AudioPidDB"/>
+    <mapping class="com.sl.model.VideomoviesDB"/>
+    <mapping class="com.sl.model.BroadcastchannelDB"/>
+    <mapping class="com.sl.model.VodPackageDB"/>
+    <mapping class="com.sl.model.AssetsOttDB"/>
+    <mapping class="com.sl.model.AudioPIDsDB"/>
+    <mapping class="com.sl.model.SubtitlesDB"/>
+    <mapping class="com.sl.model.MulticastGroupDB"/>
+    <mapping class="com.sl.model.OttUrlDB"/>
+    <mapping class="com.sl.model.DvbtUrlDB"/>
+    <mapping class="com.sl.model.ContentContractsDB"/>
+    <mapping class="com.sl.model.ContentInPurchaseMDB"/>
+    <mapping class="com.sl.model.PreviewAssetsDB"/>
+    <mapping class="com.sl.model.OttPreviewAssetsDB"/>    
+    <mapping class="com.sl.model.ImportData"/>   
+    <mapping class="com.sl.model.SeasonsDB"/> 
+    <mapping class="com.sl.model.RentalWindowsDB"/> 
+    <mapping class="com.sl.model.SerialsDB"/> 
+    
   </session-factory>
 </hibernate-configuration>

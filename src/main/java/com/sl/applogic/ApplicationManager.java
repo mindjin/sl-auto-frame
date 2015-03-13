@@ -35,7 +35,7 @@ public class ApplicationManager {
 		webdriver = WebDriverFactory.getDriver(firefox);
 		driver = new EventFiringWebDriver(webdriver);
 		driver.register(new WebDriverLogger());
-		baseUrl =ConfigProperties.getProperty("url");		
+		baseUrl = ConfigProperties.getProperty("url");		
 		driver.manage().window().maximize(); 
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get(baseUrl); 

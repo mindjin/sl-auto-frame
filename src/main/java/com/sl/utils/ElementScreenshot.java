@@ -29,7 +29,6 @@ public class ElementScreenshot extends TestListenerAdapter{
 	@Override
 	public void onTestFailure(ITestResult tr){
 		
-		
 		Object currentClass = tr.getInstance();
 		WebDriver driver = ((ConfigBase) currentClass).getDriver();
 		Date date = new Date(System.currentTimeMillis());

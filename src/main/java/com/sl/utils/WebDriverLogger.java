@@ -9,7 +9,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
@@ -39,14 +38,17 @@ public class WebDriverLogger extends AbstractWebDriverEventListener {
 	        log.info("WebDriver changed value for element - "
 	                            + elementDescription(element));
 	   }
-	    
-//	public void onException(Throwable throwable, WebDriver driver) {
-//		
-//	    	Writer writer = new StringWriter();
-//	    	PrintWriter error = new PrintWriter(writer);	    	
-//	    	throwable.printStackTrace(error);
-//	    	log.info(writer.toString());	    		    	
-//	      }
+	
+	
+	  
+	@Override
+	public void onException(Throwable throwable, WebDriver driver) {
+		
+	    	Writer writer = new StringWriter();
+	    	PrintWriter error = new PrintWriter(writer);	    	
+	    	throwable.printStackTrace(error);
+	    	log.info(writer.toString());	    		    	
+	      }
 	  
 	private String elementDescription(WebElement element) {
 	        String description = "tag:" + element.getTagName();
@@ -66,7 +68,7 @@ public class WebDriverLogger extends AbstractWebDriverEventListener {
 	    }
 	
 	private void waitCounter(WebDriver driver){
-		(new WebDriverWait(driver, 25).ignoring(NoSuchElementException.class)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("span[request-count='0']")));	
+		(new WebDriverWait(driver, 25)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("span[request-count='0']")));	
 	}
 	
 	

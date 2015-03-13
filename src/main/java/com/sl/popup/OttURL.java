@@ -3,6 +3,7 @@ package com.sl.popup;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import com.sl.model.OttUrlDB;
 import com.sl.model.User;
 import com.sl.pages.AnyForm;
 import com.sl.pages.PageManager;
@@ -44,4 +45,22 @@ public class OttURL extends AnyPopup {
 		return this;
 	}
 
+	public OttURL fillForm(OttUrlDB ottUrlDB) {
+		setTextfieldKeys(row_url, ottUrlDB.getUrl());
+		setTextfieldKeys(row_externalId, ottUrlDB.getExternalId());
+		setComboboxKeys(row_location, ottUrlDB.getLocation());
+		setTextfieldKeys(row_epgOffset, ottUrlDB.getEpgOffset());
+		return this;
+	}
+
+	public OttUrlDB readForm() {
+		OttUrlDB ottUrlDB = new OttUrlDB();
+		ottUrlDB.setUrl(insideTab(row_url).getAttribute("value"));
+		ottUrlDB.setExternalId(insideTab(row_externalId).getAttribute("value"));
+		ottUrlDB.setLocation(insideTab(row_location).getText());
+		ottUrlDB.setEpgOffset(insideTab(row_epgOffset).getAttribute("value"));
+		return ottUrlDB;
+		
+		
+	}
 }

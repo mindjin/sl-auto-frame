@@ -38,9 +38,6 @@ public class Element {
 	public Element(){
 		
 	}
-	
-	
-	
 	@Id
 	@GeneratedValue(generator="increment")
 	@GenericGenerator(name="increment", strategy = "increment")
@@ -70,9 +67,6 @@ public class Element {
 	}
 	
 	
-	
-	
-	
 	public void setID(Integer id){
 		this.id = id;
 	}
@@ -93,27 +87,12 @@ public class Element {
 	public void setValue(String value){
 		this.value = value;
 	}
-	
-	
-
-
-
-	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name="element_in_form", joinColumns = {@JoinColumn(name = "element_ID")}, inverseJoinColumns = {@JoinColumn(name="form_ID")})
 	public Set<Form> getForm() {
 		return this.form;
 	}
-
-
-
 	public void setForm(Set<Form> form) {
 		this.form = form;
 	}	
-	
-	
-	
-	
-//	
-
 }

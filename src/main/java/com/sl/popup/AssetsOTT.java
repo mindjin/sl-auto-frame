@@ -3,6 +3,7 @@ package com.sl.popup;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import com.sl.model.AssetsOttDB;
 import com.sl.model.User;
 import com.sl.pages.AnyForm;
 import com.sl.pages.PageManager;
@@ -75,6 +76,35 @@ public class AssetsOTT extends AnyPopup {
 	public AnyForm create(){		
 		addPopup();
 		return this;
+	}
+
+	public AssetsOTT fillForm(AssetsOttDB assetsOtt) {
+		setTextfieldKeys(row_name, assetsOtt.getName());
+		setComboboxKeys(row_assetType, assetsOtt.getAssetType());
+		setTextfieldKeys(row_bitrate, assetsOtt.getBitrate());
+		setTextfieldKeys(row_containerType, assetsOtt.getContainerType());
+		setTextfieldKeys(row_durationTime, assetsOtt.getDurationTime());		
+		setComboboxKeys(row_status, assetsOtt.getStatus());
+		setCheckboxKeys(row_isCrypted, assetsOtt.getIsCrypted());
+		setCheckboxKeys(row_isDeleted, assetsOtt.getIsDeleted());
+		setComboboxKeys(row_transport, assetsOtt.getTransport());
+		setList2listKeys(states_Locations, assetsOtt.getLocations());	
+		return this;
+	}
+
+	public AssetsOttDB readform() {
+		AssetsOttDB assetsOtt = new AssetsOttDB();
+		assetsOtt.setName(insideTab(row_name).getAttribute("value"));
+		assetsOtt.setAssetType(insideTab(row_assetType).getText());
+		assetsOtt.setBitrate(insideTab(row_bitrate).getAttribute("value"));
+		assetsOtt.setContainerType(insideTab(row_containerType).getAttribute("value"));
+		assetsOtt.setDurationTime(insideTab(row_durationTime).getAttribute("value"));
+		assetsOtt.setStatus(insideTab(row_status).getText());
+		assetsOtt.setIsCrypted(pageManager.getCheckbox(row_isCrypted).getStatus());
+		assetsOtt.setIsDeleted(pageManager.getCheckbox(row_isDeleted).getStatus());
+		assetsOtt.setTransport(insideTab(row_transport).getText());
+		assetsOtt.setLocations(pageManager.getList2List(states_Locations).getValue());	
+		return assetsOtt;
 	}
 
 }

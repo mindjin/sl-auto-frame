@@ -1,235 +1,246 @@
 package com.sl.test;
 
-import java.util.List;
+import static com.sl.utils.DataProviderUtils.GENERIC_DP;
+import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import com.sl.applogic.DataHelper.ElementsForm;
+import com.sl.annotation.Entity;
 import com.sl.conf.ConfigBase;
-import com.sl.data.Element;
 import com.sl.data.RandomValues;
+import com.sl.model.AssetsDB;
+import com.sl.model.AssetsOttDB;
+import com.sl.model.AudioPidDB;
+import com.sl.model.KaraokeDB;
 import com.sl.pages.HomePage.Menu;
 import com.sl.pages.PageManager.Form;
+import com.sl.utils.DataProviderUtils;
 import com.sl.utils.ElementScreenshot;
 
 @Listeners(ElementScreenshot.class)
 public class TestKaraoke extends ConfigBase{	
 	
 	
-		@Test
-		public void createKaraokeWithFillForm() throws Exception{		
+	@Entity(entity=KaraokeDB.class, ids=1)
+	@Test(dataProviderClass = DataProviderUtils.class, dataProvider = GENERIC_DP)
+		public void createKaraokeWithFillForm(KaraokeDB karaoke) throws Exception{	
+		rndNum = RandomValues.rndNumb(999999);	
+		karaoke.setName("UI_Test_Karaoke_"+rndNum);
 			app.getNavigationHelper().openPage(Menu.KARAOKE);
-			app.getHomePageHelper().addForm();		
-			List<Element> randomValuesKaraoke = app.getDataHelper().getRandomValues(Form.KARAOKE);		
-			app.getFormHelper().fillForm(randomValuesKaraoke, Form.KARAOKE);
-			pageManager.karaoke.createAndClose();
-			app.getHomePageHelper().openForm(ElementsForm.NAME.getValue());
-			app.getFormHelper().verifyForm(randomValuesKaraoke, Form.KARAOKE);	
+			app.getHomePageHelper().addForm();	
+			pageManager.karaoke.fillForm(karaoke).createAndClose();
+			app.getHomePageHelper().openForm(karaoke.getName());
+			KaraokeDB actualData = pageManager.karaoke.readForm();
+			assertEquals(actualData.toString(), karaoke.toString());
 			app.getFormHelper().deleteCard(Form.KARAOKE);
 
 	}
-		@Test
-		public void createAssetsWithFillForm() throws Exception{	
+	
+	@Entity(entity=AssetsDB.class, ids=1)
+	@Test(dataProviderClass = DataProviderUtils.class, dataProvider = GENERIC_DP)
+		public void createAssetsWithFillForm(AssetsDB assets) throws Exception{				
 		rndNum =RandomValues.rndNumb(999999);	
 			app.getNavigationHelper().openPage(Menu.KARAOKE);
 			app.getHomePageHelper().addForm();	
 			pageManager.karaoke
-			.setName("wp_58.1_"+rndNum)
+			.setName("UI_Test_Karaoke_"+rndNum)
 			.setExternalId(rndNum)
-			.setLocations("Московский");			
-			pageManager.karaoke.addAssets();
-			List<Element> defaultValuesAssets = app.getDataHelper().getRandomValues(Form.ASSETS);
-			app.getFormHelper().fillForm(defaultValuesAssets, Form.ASSETS);
-			pageManager.assets.create();
+			.setLocations("Московский")
+			.addAssets().
+			fillForm(assets).
+			create();
 			pageManager.karaoke.createAndClose();
-			app.getHomePageHelper().openForm("wp_58.1_"+rndNum);
-			pageManager.karaoke.openAsset(ElementsForm.NAME.getValue());
-			app.getFormHelper().verifyForm(defaultValuesAssets, Form.ASSETS);
+			app.getHomePageHelper().openForm("UI_Test_Karaoke_"+rndNum);
+			AssetsDB actualData = pageManager.karaoke.openAsset(assets.getName()).readForm();
+			assertEquals( actualData.toString(), assets.toString());
 			pageManager.assets.close();
 			app.getFormHelper().deleteCard(Form.KARAOKE);
+			
 		}
 		
-		@Test
-		public void createAudioPIDWithFillForm() throws Exception{
+	@Entity(entity=AudioPidDB.class, ids=1)
+	@Test(dataProviderClass = DataProviderUtils.class, dataProvider = GENERIC_DP)
+		public void createAudioPIDWithFillForm(AudioPidDB audioPid) throws Exception{
 		rndNum =RandomValues.rndNumb(999999);
 			app.getNavigationHelper().openPage(Menu.KARAOKE);
 			app.getHomePageHelper().addForm();	
 			pageManager.karaoke
-			.setName("wp_58.1_"+rndNum)
+			.setName("UI_Test_Karaoke_"+rndNum)
 			.setExternalId(rndNum)
-			.setLocations("Московский");			
-			pageManager.karaoke.addAssets().setName(rndNum)
-			.addAudioPID();
-			List<Element> defaultValuesAudioPID = app.getDataHelper().getRandomValues(Form.AUDIOPID);
-			app.getFormHelper().fillForm(defaultValuesAudioPID, Form.AUDIOPID);
-			pageManager.audioPID.create();
+			.setLocations("Московский")
+			.addAssets()
+			.setName(rndNum)
+			.addAudioPID()
+			.fillForm(audioPid)
+			.create();
 			pageManager.assets.create();
 			pageManager.karaoke.createAndClose();
-			app.getHomePageHelper().openForm("wp_58.1_"+rndNum);
+			app.getHomePageHelper().openForm("UI_Test_Karaoke_"+rndNum);
 			pageManager.karaoke
 			.openAsset(rndNum)
-			.openAudioPID(ElementsForm.NAME.getValue());
-			app.getFormHelper().verifyForm(defaultValuesAudioPID, Form.AUDIOPID);
+			.openAudioPID(audioPid.getName());
+			AudioPidDB actualData = pageManager.audioPID.readForm();
+			assertEquals( actualData.toString(), audioPid.toString());
 			pageManager.audioPID.close();
 			pageManager.assets.close();
 			app.getFormHelper().deleteCard(Form.KARAOKE);			
 		}
 		
-		@Test
-		public void createAssetsOTTWithFillForm() throws Exception{
+		@Entity(entity=AssetsOttDB.class, ids=1)
+		@Test(dataProviderClass = DataProviderUtils.class, dataProvider = GENERIC_DP)
+		public void createAssetsOTTWithFillForm(AssetsOttDB assetsOtt) throws Exception{
 		rndNum =RandomValues.rndNumb(999999);
 			app.getNavigationHelper().openPage(Menu.KARAOKE);
 			app.getHomePageHelper().addForm();	
 			pageManager.karaoke
-			.setName("wp_58.1_"+rndNum)
+			.setName("UI_Test_Karaoke_"+rndNum)
 			.setExternalId(rndNum)
 			.setLocations("Московский");
-			pageManager.karaoke.addAssertsOTT();
-			List<Element> defaultValuesAssetsOTT = app.getDataHelper().getRandomValues(Form.ASSETSOTT);
-			app.getFormHelper().fillForm(defaultValuesAssetsOTT, Form.ASSETSOTT);
-			pageManager.assetsOTT.create();
+			pageManager.karaoke.addAssertsOTT().fillForm(assetsOtt).create();
 			pageManager.karaoke.createAndClose();
-			app.getHomePageHelper().openForm("wp_58.1_"+rndNum);
-			pageManager.karaoke.openAssetOTT(ElementsForm.NAME.getValue());
-			app.getFormHelper().verifyForm(defaultValuesAssetsOTT, Form.ASSETSOTT);
+			app.getHomePageHelper().openForm("UI_Test_Karaoke_"+rndNum);
+			AssetsOttDB actualData = pageManager.karaoke.openAssetOTT(assetsOtt.getName()).readform();;
+			assertEquals(actualData.toString(), assetsOtt.toString());
 			pageManager.assetsOTT.close();
 			app.getFormHelper().deleteCard(Form.KARAOKE);			
 		}
 		
-		@Test
-		public void createAudioPIDinAssetsOTTWithFillForm() throws Exception{
+		@Entity(entity=AudioPidDB.class, ids=1)
+		@Test(dataProviderClass = DataProviderUtils.class, dataProvider = GENERIC_DP)
+		public void createAudioPIDinAssetsOTTWithFillForm(AudioPidDB audioPid) throws Exception{
 		rndNum = RandomValues.rndNumb(999999);
 			app.getNavigationHelper().openPage(Menu.KARAOKE);
 			app.getHomePageHelper().addForm();	
 			pageManager.karaoke
-			.setName("wp_58.1_"+rndNum)
+			.setName("UI_Test_Karaoke_"+rndNum)
 			.setExternalId(rndNum)
 			.setLocations("Московский");
 			pageManager.karaoke.addAssertsOTT()
 			.setName(rndNum)
-			.addAudioPID();
-			List<Element> defaultValuesAssetsOTT = app.getDataHelper().getRandomValues(Form.AUDIOPID);
-			app.getFormHelper().fillForm(defaultValuesAssetsOTT, Form.AUDIOPID);
-			pageManager.audioPID.create();
+			.addAudioPID().fillForm(audioPid)
+			.create();
 			pageManager.assetsOTT.create();
 			pageManager.karaoke.createAndClose();
-			app.getHomePageHelper().openForm("wp_58.1_"+rndNum);
+			app.getHomePageHelper().openForm("UI_Test_Karaoke_"+rndNum);
 			pageManager.karaoke
 			.openAssetOTT(rndNum)
-			.openAudioPID(ElementsForm.NAME.getValue());
-			app.getFormHelper().verifyForm(defaultValuesAssetsOTT, Form.AUDIOPID);
+			.openAudioPID(audioPid.getName());
+			AudioPidDB actualData = pageManager.audioPID.readForm();
+			assertEquals( actualData.toString(), audioPid.toString());
 			pageManager.audioPID.close();
 			pageManager.assetsOTT.close();
 			app.getFormHelper().deleteCard(Form.KARAOKE);			
 		}
 		
-		@Test
-		public void saveKaraokeWithFillForm() throws Exception{
+	@Entity(entity=KaraokeDB.class, ids=1)
+	@Test(dataProviderClass = DataProviderUtils.class, dataProvider = GENERIC_DP)
+		public void saveKaraokeWithFillForm(KaraokeDB karaoke) throws Exception{
 		rndNum =RandomValues.rndNumb(999999);
+		karaoke.setName("UI_Test_Karaoke_"+rndNum);
 			app.getNavigationHelper().openPage(Menu.KARAOKE);
 			app.getHomePageHelper().addForm();	
 			pageManager.karaoke
-			.setName("wp_58.1_"+rndNum)
+			.setName(rndNum)
 			.setExternalId(rndNum)
 			.setLocations("Московский");			
 			pageManager.karaoke.createAndClose();
-			app.getHomePageHelper().openForm("wp_58.1_"+rndNum);
-			List<Element> randomValuesKaraoke = app.getDataHelper().getRandomValues(Form.KARAOKE);		
-			app.getFormHelper().fillForm(randomValuesKaraoke, Form.KARAOKE);
-			pageManager.karaoke.saveAndClose();
-			app.getHomePageHelper().openForm(ElementsForm.NAME.getValue());
-			app.getFormHelper().verifyForm(randomValuesKaraoke, Form.KARAOKE);	
+			app.getHomePageHelper().openForm(rndNum);
+			pageManager.karaoke.fillForm(karaoke).saveAndClose();
+			app.getHomePageHelper().openForm(karaoke.getName());
+			KaraokeDB actualData = pageManager.karaoke.readForm();
+			assertEquals(actualData.toString(), karaoke.toString());	
 			app.getFormHelper().deleteCard(Form.KARAOKE);
 	}
 		
-		@Test
-		public void saveAssetsWithFillForm()  throws Exception{
+	@Entity(entity=AssetsDB.class, ids=1)
+	@Test(dataProviderClass = DataProviderUtils.class, dataProvider = GENERIC_DP)
+		public void saveAssetsWithFillForm(AssetsDB assets)  throws Exception{
 		rndNum =RandomValues.rndNumb(999999);
 			app.getNavigationHelper().openPage(Menu.KARAOKE);
 			app.getHomePageHelper().addForm();	
 			pageManager.karaoke
-			.setName("wp_58.1_"+rndNum)
+			.setName("UI_Test_Karaoke_"+rndNum)
 			.setExternalId(rndNum)
 			.setLocations("Московский");			
 			pageManager.karaoke.addAssets().setName(rndNum);
 			pageManager.assets.create();
 			pageManager.karaoke.createAndClose();
-			app.getHomePageHelper().openForm("wp_58.1_"+rndNum);
+			app.getHomePageHelper().openForm("UI_Test_Karaoke_"+rndNum);
 			pageManager.karaoke
-			.openAsset(ElementsForm.NAME.getValue());
-			List<Element> defaultValuesAssets = app.getDataHelper().getRandomValues(Form.ASSETS);
-			app.getFormHelper().fillForm(defaultValuesAssets, Form.ASSETS);
-			pageManager.assets.save();
+			.openAsset(rndNum).fillForm(assets).save();
 			pageManager.karaoke.saveAndClose();
-			app.getHomePageHelper().openForm("wp_58.1_"+rndNum);
-			pageManager.karaoke.openAsset(ElementsForm.NAME.getValue());
-			app.getFormHelper().verifyForm(defaultValuesAssets, Form.ASSETS);
+			app.getHomePageHelper().openForm("UI_Test_Karaoke_"+rndNum);
+			AssetsDB actualData = pageManager.karaoke.openAsset(assets.getName()).readForm();
+			assertEquals( actualData.toString(), assets.toString());
 			pageManager.assets.close();
-			app.getFormHelper().deleteCard(Form.KARAOKE);	
+			app.getFormHelper().deleteCard(Form.KARAOKE);
 		}
 		
-		@Test
-		public void saveAudioPIDofAssetsWithFillForm()  throws Exception{
+	@Entity(entity=AudioPidDB.class, ids=1)
+	@Test(dataProviderClass = DataProviderUtils.class, dataProvider = GENERIC_DP)
+		public void saveAudioPIDofAssetsWithFillForm(AudioPidDB audioPid)  throws Exception{
 			rndNum =RandomValues.rndNumb(999999);
 			app.getNavigationHelper().openPage(Menu.KARAOKE);
 			app.getHomePageHelper().addForm();	
 			pageManager.karaoke
-			.setName("wp_58.1_"+rndNum)
+			.setName("UI_Test_Karaoke_"+rndNum)
 			.setExternalId(rndNum)
 			.setLocations("Московский");			
 			pageManager.karaoke.addAssets().setName(rndNum).addAudioPID();
 			pageManager.audioPID.setName(rndNum).setPID(rndNum).create();
 			pageManager.assets.create();
 			pageManager.karaoke.createAndClose();
-			app.getHomePageHelper().openForm("wp_58.1_"+rndNum);
+			app.getHomePageHelper().openForm("UI_Test_Karaoke_"+rndNum);
 			pageManager.karaoke
-			.openAsset(rndNum).openAudioPID(rndNum);			
-			List<Element> defaultValuesAudioPID = app.getDataHelper().getRandomValues(Form.AUDIOPID);
-			app.getFormHelper().fillForm(defaultValuesAudioPID, Form.AUDIOPID);
-			pageManager.audioPID.save();			
+			.openAsset(rndNum)
+			.openAudioPID(rndNum)
+			.fillForm(audioPid)
+			.save();			
 			pageManager.assets.save();
 			pageManager.karaoke.saveAndClose();
-			app.getHomePageHelper().openForm("wp_58.1_"+rndNum);
-			pageManager.karaoke.openAsset(rndNum).openAudioPID(ElementsForm.NAME.getValue());
-			app.getFormHelper().verifyForm(defaultValuesAudioPID, Form.AUDIOPID);
+			app.getHomePageHelper().openForm("UI_Test_Karaoke_"+rndNum);
+			pageManager.karaoke.openAsset(rndNum).openAudioPID(audioPid.getName());
+			AudioPidDB actualData = pageManager.audioPID.readForm();
+			assertEquals( actualData.toString(), audioPid.toString());
 			pageManager.audioPID.close();
 			pageManager.assets.close();
 			app.getFormHelper().deleteCard(Form.KARAOKE);	
 		}
 		
-		@Test
-		public void saveAssetsOTTWithFillForm() throws Exception{
+		@Entity(entity=AssetsOttDB.class, ids=1)
+		@Test(dataProviderClass = DataProviderUtils.class, dataProvider = GENERIC_DP)
+		public void saveAssetsOTTWithFillForm(AssetsOttDB assetsOtt) throws Exception{
 			rndNum =RandomValues.rndNumb(999999);
 			app.getNavigationHelper().openPage(Menu.KARAOKE);
 			app.getHomePageHelper().addForm();	
 			pageManager.karaoke
-			.setName("wp_58.1_"+rndNum)
+			.setName("UI_Test_Karaoke_"+rndNum)
 			.setExternalId(rndNum)
-			.setLocations("Московский");
-			pageManager.karaoke.addAssertsOTT().setName(rndNum).create();
+			.setLocations("Московский")
+			.addAssertsOTT()
+			.setName(rndNum)
+			.create();
 			pageManager.karaoke.createAndClose();
-			app.getHomePageHelper().openForm("wp_58.1_"+rndNum);
-			pageManager.karaoke.openAssetOTT(rndNum);
-			List<Element> defaultValuesAssetsOTT = app.getDataHelper().getRandomValues(Form.ASSETSOTT);
-			app.getFormHelper().fillForm(defaultValuesAssetsOTT, Form.ASSETSOTT);
-			pageManager.assetsOTT.save();
+			app.getHomePageHelper().openForm("UI_Test_Karaoke_"+rndNum);
+			pageManager.karaoke.openAssetOTT(rndNum).fillForm(assetsOtt).save();
 			pageManager.karaoke.saveAndClose();
-			app.getHomePageHelper().openForm("wp_58.1_"+rndNum);
-			pageManager.karaoke.openAssetOTT(ElementsForm.NAME.getValue());
-			app.getFormHelper().verifyForm(defaultValuesAssetsOTT, Form.ASSETSOTT);
+			app.getHomePageHelper().openForm("UI_Test_Karaoke_"+rndNum);
+			AssetsOttDB actualData = pageManager.karaoke.openAssetOTT(assetsOtt.getName()).readform();;
+			assertEquals(actualData.toString(), assetsOtt.toString());
 			pageManager.assetsOTT.close();
 			app.getFormHelper().deleteCard(Form.KARAOKE);	
 			
 		}
 		
-		@Test
-		public void saveAudioPIDofAssetsOTTWithFillForm() throws Exception{
+		@Entity(entity=AudioPidDB.class, ids=1)
+		@Test(dataProviderClass = DataProviderUtils.class, dataProvider = GENERIC_DP)
+		public void saveAudioPIDofAssetsOTTWithFillForm(AudioPidDB audioPid) throws Exception{
 			rndNum =RandomValues.rndNumb(999999);
 			app.getNavigationHelper().openPage(Menu.KARAOKE);
 			app.getHomePageHelper().addForm();	
 			pageManager.karaoke
-			.setName("wp_58.1_"+rndNum)
+			.setName("UI_Test_Karaoke_"+rndNum)
 			.setExternalId(rndNum)
 			.setLocations("Московский");
 			pageManager.karaoke
@@ -241,16 +252,20 @@ public class TestKaraoke extends ConfigBase{
 			.create();
 			pageManager.assetsOTT.create();
 			pageManager.karaoke.createAndClose();
-			app.getHomePageHelper().openForm("wp_58.1_"+rndNum);
-			pageManager.karaoke.openAssetOTT(rndNum).openAudioPID(rndNum);
-			List<Element> defaultValuesAudioPID = app.getDataHelper().getRandomValues(Form.AUDIOPID);
-			app.getFormHelper().fillForm(defaultValuesAudioPID, Form.AUDIOPID);
-			pageManager.audioPID.save();
+			app.getHomePageHelper().openForm("UI_Test_Karaoke_"+rndNum);
+			pageManager.karaoke
+			.openAssetOTT(rndNum)
+			.openAudioPID(rndNum)
+			.fillForm(audioPid)
+			.save();
 			pageManager.assetsOTT.save();
 			pageManager.karaoke.saveAndClose();
-			app.getHomePageHelper().openForm("wp_58.1_"+rndNum);
-			pageManager.karaoke.openAssetOTT(rndNum).openAudioPID(ElementsForm.NAME.getValue());
-			app.getFormHelper().verifyForm(defaultValuesAudioPID, Form.AUDIOPID);
+			app.getHomePageHelper().openForm("UI_Test_Karaoke_"+rndNum);
+			AudioPidDB actualData = pageManager.karaoke
+					.openAssetOTT(rndNum)
+					.openAudioPID(audioPid.getName())
+					.readForm();
+			assertEquals(actualData.toString(), audioPid.toString());
 			pageManager.audioPID.close();
 			pageManager.assetsOTT.close();
 			app.getFormHelper().deleteCard(Form.KARAOKE);	

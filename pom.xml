@@ -8,7 +8,7 @@
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   <aspectj.version>1.8.4</aspectj.version>
-    <allure.version>1.4.1</allure.version>
+    <allure.version>1.4.6</allure.version>
   </properties>
   <profiles>
   <profile>
@@ -23,11 +23,12 @@
    </activation>
   </profile>
     <profile>
-        <id>TestVideomovies</id>
+        <id>asd</id>
         <properties>
-         <!--<include.tests>**/TestVideomovies.java</include.tests>  
-        <testcase.groups>com.sl.test.TestVideomovies</testcase.groups>  -->      
-        </properties>
+   	<url>http://10.65.50.156:8081/smarttube/master/adminui4/app/</url>    
+  	<login>admin2</login>
+  	<password>admin2</password>  	  	 
+   </properties>
     </profile>
       </profiles>
   <build>
@@ -89,6 +90,12 @@
   <groupId>ru.yandex.qatools.allure</groupId>
   		<artifactId>allure-testng-adaptor</artifactId>
   		<version>${allure.version}</version>
+  		<exclusions>
+  		<exclusion>
+  		<groupId>org.slf4j</groupId>
+  		<artifactId>slf4j-log4j12</artifactId>
+  		</exclusion>
+  		</exclusions>
   </dependency>
   <dependency>
   		<groupId>org.hibernate</groupId>
@@ -143,7 +150,7 @@
   	  	<dependency>
   	  		<groupId>org.testng</groupId>
   	  		<artifactId>testng</artifactId>
-  	  		<version>6.8.8</version>
+  	  		<version>6.8.17</version>
   	  	</dependency>
   </dependencies>
   <reporting>
