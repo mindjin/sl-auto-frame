@@ -20,7 +20,8 @@ public class TestBundlePacks extends ConfigBase{
 	public void fillBundlePack(BundlePacksDB bundlePack) throws Exception{
 		rndNum =RandomValues.rndNumb(999999);
 		bundlePack.setName("UI_Test_BundlePack_"+rndNum);
-		//
+		//\\\\
+		
 		app.getNavigationHelper().openPage(Menu.BUNDLEPACKS);
 		app.getHomePageHelper().addForm();
 		pageManager.bundlePacks.fillForm(bundlePack)
