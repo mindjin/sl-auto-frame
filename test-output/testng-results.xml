@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="27065" started-at="2015-03-18T14:54:41Z" finished-at="2015-03-18T14:55:08Z">
+  <suite name="Default suite" duration-ms="31708" started-at="2015-03-18T20:56:20Z" finished-at="2015-03-18T20:56:52Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="27065" started-at="2015-03-18T14:54:41Z" finished-at="2015-03-18T14:55:08Z">
+    <test name="Default test" duration-ms="31708" started-at="2015-03-18T20:56:20Z" finished-at="2015-03-18T20:56:52Z">
       <class name="com.sl.test.TestBundlePacks">
-        <test-method status="PASS" signature="init()[pri:0, instance:com.sl.test.TestBundlePacks@f0f2775]" name="init" is-config="true" duration-ms="3553" started-at="2015-03-18T17:54:41Z" finished-at="2015-03-18T17:54:45Z">
+        <test-method status="PASS" signature="init()[pri:0, instance:com.sl.test.TestBundlePacks@f0f2775]" name="init" is-config="true" duration-ms="4282" started-at="2015-03-18T23:56:20Z" finished-at="2015-03-18T23:56:24Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method status="PASS" signature="fillBundlePack(com.sl.model.BundlePacksDB)[pri:0, instance:com.sl.test.TestBundlePacks@f0f2775]" name="fillBundlePack" duration-ms="21905" started-at="2015-03-18T17:54:46Z" data-provider="genericDP" finished-at="2015-03-18T17:55:08Z">
+        <test-method status="PASS" signature="fillBundlePack(com.sl.model.BundlePacksDB)[pri:0, instance:com.sl.test.TestBundlePacks@f0f2775]" name="fillBundlePack" duration-ms="25268" started-at="2015-03-18T23:56:26Z" data-provider="genericDP" finished-at="2015-03-18T23:56:51Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[name : UI_Test_BundlePack_206672;
+                <![CDATA[[name : UI_Test_BundlePack_442590;
 forSubscribe : 1;
 externalId : 1241512546;
 isAccessByLock : 1;
@@ -38,7 +38,7 @@ description : 235892y498gqjhgkljbglqagbke;
           <reporter-output>
           </reporter-output>
         </test-method> <!-- fillBundlePack -->
-        <test-method status="PASS" signature="stop()[pri:0, instance:com.sl.test.TestBundlePacks@f0f2775]" name="stop" is-config="true" duration-ms="71" started-at="2015-03-18T17:55:08Z" finished-at="2015-03-18T17:55:08Z">
+        <test-method status="PASS" signature="stop()[pri:0, instance:com.sl.test.TestBundlePacks@f0f2775]" name="stop" is-config="true" duration-ms="93" started-at="2015-03-18T23:56:52Z" finished-at="2015-03-18T23:56:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- stop -->
