@@ -52,7 +52,10 @@ public enum Form{
 	CONTENTINPURCHASEM("contentInPurchaseM"),
 	CONTENTCONTRACTS("contentContracts"),
 	SEASONS("seasons"),
-	SERIALS("serials");
+	SERIALS("serials"),
+	BANNERS("banners"),
+	BUNDLEPACKS("bundlePacks");
+	
 		Form(String text){
 			this.text = text;
 		}
@@ -83,6 +86,8 @@ public ContentContracts contentContracts;
 public Seasons seasons;
 public RentalWindows rentalWindows;
 public Serials serials;
+public Banners banners;
+public BundlePacks bundlePacks;
 
 public HomePage homePage;
 public ParamCopy paramCopy;
@@ -94,6 +99,7 @@ private Combobox combobox;
 private Checkbox checkbox;
 private LinkedList linkedList;
 private LinkedId linkedId;
+
 
 
 
@@ -126,6 +132,9 @@ private LinkedId linkedId;
 		seasons = initElements(new Seasons(this));
 		rentalWindows = initElements(new RentalWindows(this));
 		serials = initElements(new Serials(this));
+		banners = initElements(new Banners(this));
+		bundlePacks = initElements(new BundlePacks(this));
+		
 	}
 	
 	

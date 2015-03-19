@@ -4,7 +4,7 @@
 
    <test name="Season" >
     <classes>
-       <class name="com.sl.test.TestVideomovies" />              
+       <class name="com.sl.test.TestPromo" />              
     </classes>  
   </test>
   

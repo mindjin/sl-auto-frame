@@ -35,6 +35,8 @@
     <mapping class="com.sl.model.SeasonsDB"/> 
     <mapping class="com.sl.model.RentalWindowsDB"/> 
     <mapping class="com.sl.model.SerialsDB"/> 
+    <mapping class="com.sl.model.BannersDB"/> 
+    <mapping class="com.sl.model.BundlePacksDB"/> 
     
   </session-factory>
 </hibernate-configuration>

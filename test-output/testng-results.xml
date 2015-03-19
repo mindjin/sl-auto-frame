@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="27065" started-at="2015-03-18T14:54:41Z" finished-at="2015-03-18T14:55:08Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="27065" started-at="2015-03-18T14:54:41Z" finished-at="2015-03-18T14:55:08Z">
+      <class name="com.sl.test.TestBundlePacks">
+        <test-method status="PASS" signature="init()[pri:0, instance:com.sl.test.TestBundlePacks@f0f2775]" name="init" is-config="true" duration-ms="3553" started-at="2015-03-18T17:54:41Z" finished-at="2015-03-18T17:54:45Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+        <test-method status="PASS" signature="fillBundlePack(com.sl.model.BundlePacksDB)[pri:0, instance:com.sl.test.TestBundlePacks@f0f2775]" name="fillBundlePack" duration-ms="21905" started-at="2015-03-18T17:54:46Z" data-provider="genericDP" finished-at="2015-03-18T17:55:08Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[name : UI_Test_BundlePack_206672;
+forSubscribe : 1;
+externalId : 1241512546;
+isAccessByLock : 1;
+unsubscribePeriod : 123;
+serviceProviders : МРФЦ Московский;
+stbFunctions : HD;
+networkTypes : ADSL;
+subscribeCount : 234;
+type : wp_TypeService;
+appleId : 55363;
+androidId : 69977979795;
+smarttvId : 456532635;
+portalExternalId : 265365356;
+repPkgName : bundlepacks222;
+description : 235892y498gqjhgkljbglqagbke;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillBundlePack -->
+        <test-method status="PASS" signature="stop()[pri:0, instance:com.sl.test.TestBundlePacks@f0f2775]" name="stop" is-config="true" duration-ms="71" started-at="2015-03-18T17:55:08Z" finished-at="2015-03-18T17:55:08Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stop -->
+      </class> <!-- com.sl.test.TestBundlePacks -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
