@@ -2,47 +2,40 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="31708" started-at="2015-03-18T20:56:20Z" finished-at="2015-03-18T20:56:52Z">
+  <suite name="Default suite" duration-ms="21449" started-at="2015-03-20T13:15:03Z" finished-at="2015-03-20T13:15:25Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="31708" started-at="2015-03-18T20:56:20Z" finished-at="2015-03-18T20:56:52Z">
-      <class name="com.sl.test.TestBundlePacks">
-        <test-method status="PASS" signature="init()[pri:0, instance:com.sl.test.TestBundlePacks@f0f2775]" name="init" is-config="true" duration-ms="4282" started-at="2015-03-18T23:56:20Z" finished-at="2015-03-18T23:56:24Z">
+    <test name="Default test" duration-ms="21449" started-at="2015-03-20T13:15:03Z" finished-at="2015-03-20T13:15:25Z">
+      <class name="com.sl.test.TestServicePlans">
+        <test-method status="PASS" signature="init()[pri:0, instance:com.sl.test.TestServicePlans@f0f2775]" name="init" is-config="true" duration-ms="3841" started-at="2015-03-20T16:15:03Z" finished-at="2015-03-20T16:15:07Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method status="PASS" signature="fillBundlePack(com.sl.model.BundlePacksDB)[pri:0, instance:com.sl.test.TestBundlePacks@f0f2775]" name="fillBundlePack" duration-ms="25268" started-at="2015-03-18T23:56:26Z" data-provider="genericDP" finished-at="2015-03-18T23:56:51Z">
+        <test-method status="PASS" signature="verifySaveAndClose(com.sl.model.ServicePlansDB)[pri:0, instance:com.sl.test.TestServicePlans@f0f2775]" name="verifySaveAndClose" duration-ms="15819" started-at="2015-03-20T16:15:09Z" data-provider="genericDP" finished-at="2015-03-20T16:15:25Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[name : UI_Test_BundlePack_442590;
-forSubscribe : 1;
-externalId : 1241512546;
-isAccessByLock : 1;
-unsubscribePeriod : 123;
-serviceProviders : МРФЦ Московский;
-stbFunctions : HD;
-networkTypes : ADSL;
-subscribeCount : 234;
-type : wp_TypeService;
-appleId : 55363;
-androidId : 69977979795;
-smarttvId : 456532635;
-portalExternalId : 265365356;
-repPkgName : bundlepacks222;
-description : 235892y498gqjhgkljbglqagbke;
-]]]>
+                <![CDATA[name : UI_Test_ServicePlan_560389;
+startDate : 20.03.2014 00:00:00;
+endDate : 20.03.2019 00:00:00;
+status : WP_StatusOfTariffPlans;
+serviceProvider : Тестовые учетные записи;
+currency : Рубли;
+externalId : 427751254;
+nonBlockedPacks : 222;
+isTest : 1;
+]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- fillBundlePack -->
-        <test-method status="PASS" signature="stop()[pri:0, instance:com.sl.test.TestBundlePacks@f0f2775]" name="stop" is-config="true" duration-ms="93" started-at="2015-03-18T23:56:52Z" finished-at="2015-03-18T23:56:52Z">
+        </test-method> <!-- verifySaveAndClose -->
+        <test-method status="PASS" signature="stop()[pri:0, instance:com.sl.test.TestServicePlans@f0f2775]" name="stop" is-config="true" duration-ms="99" started-at="2015-03-20T16:15:25Z" finished-at="2015-03-20T16:15:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- stop -->
-      </class> <!-- com.sl.test.TestBundlePacks -->
+      </class> <!-- com.sl.test.TestServicePlans -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

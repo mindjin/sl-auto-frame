@@ -35,6 +35,9 @@ public class HomePage extends Page{
 	protected WebElement banners;
 	@FindBy(css="[href='BundlePackage/list']")
 	protected WebElement bundlepacks;
+	@FindBy(css="[href='ProductOffer/list']")
+	protected WebElement servicePlans;
+	
 	
 	@FindBy(css="[id='ListFilters'] [id='row.name']")
 	protected WebElement name;	
@@ -65,7 +68,8 @@ public class HomePage extends Page{
 		SEASONS("contentBundle"),
 		SERIALS("series"),
 		BANNERS("banners"), 
-		BUNDLEPACKS("bundlepacks");
+		BUNDLEPACKS("bundlepacks"), //пакеты услуг
+		SERVICEPLANS("servicePlans"); //тарифные планы
 		Menu(String text){
 			this.text = text;
 		}

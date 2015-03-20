@@ -10,9 +10,9 @@ import com.sl.pages.PageManager;
 public class List2List extends Page{
 	
 	protected WebElement element,leftFilter,rightFilter,listElement;	
-	protected Actions actions;
+	private Actions actions;
 	
-	private enum List{
+	protected enum List{
 		LEFT("left"),
 		RIGHT("right");
 		private String value;
@@ -91,7 +91,7 @@ public class List2List extends Page{
 	}	
 	
 	
-	private int getListSize(List list){
+	protected int getListSize(List list){
 		String size;
 		if(list.getValue().equals("left"));
 		size = element.findElement(By.cssSelector("[ng-click='addAll()']")).getText();

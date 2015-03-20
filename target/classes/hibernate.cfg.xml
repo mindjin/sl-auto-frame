@@ -37,6 +37,8 @@
     <mapping class="com.sl.model.SerialsDB"/> 
     <mapping class="com.sl.model.BannersDB"/> 
     <mapping class="com.sl.model.BundlePacksDB"/> 
+    <mapping class="com.sl.model.ServicePlansDB"/> 
+    
     
   </session-factory>
 </hibernate-configuration>

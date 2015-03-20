@@ -26,6 +26,7 @@ import com.sl.utils.Combobox;
 import com.sl.utils.Finder;
 import com.sl.utils.LinkedList;
 import com.sl.utils.List2List;
+import com.sl.utils.List2ListTree;
 
 public class PageManager {
 	
@@ -54,7 +55,9 @@ public enum Form{
 	SEASONS("seasons"),
 	SERIALS("serials"),
 	BANNERS("banners"),
-	BUNDLEPACKS("bundlePacks");
+	BUNDLEPACKS("bundlePacks"),
+	SERVICEPLANS("servicePlans");
+	
 	
 		Form(String text){
 			this.text = text;
@@ -88,6 +91,7 @@ public RentalWindows rentalWindows;
 public Serials serials;
 public Banners banners;
 public BundlePacks bundlePacks;
+public ServicePlans servicePlans;
 
 public HomePage homePage;
 public ParamCopy paramCopy;
@@ -98,9 +102,8 @@ private List2List list2List;
 private Combobox combobox;
 private Checkbox checkbox;
 private LinkedList linkedList;
+private List2ListTree list2listTree;
 private LinkedId linkedId;
-
-
 
 
 
@@ -134,6 +137,7 @@ private LinkedId linkedId;
 		serials = initElements(new Serials(this));
 		banners = initElements(new Banners(this));
 		bundlePacks = initElements(new BundlePacks(this));
+		servicePlans = initElements(new ServicePlans(this));
 		
 	}
 	
@@ -154,6 +158,10 @@ private LinkedId linkedId;
 				  list2List = new List2List(this, element);
 			  return list2List;
 			 
+		  }
+		  public List2ListTree getList2ListTree(WebElement element){				 
+			  list2listTree = new List2ListTree(this, element);
+		  return list2listTree;
 		  }
 		  
 		  public Combobox getCombobox(WebElement element){
