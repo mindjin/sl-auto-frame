@@ -64,16 +64,33 @@ public abstract class Page {
 	public WebElement insideTab(WebElement element){
 		
 		try{
-			if(!element.isDisplayed()){				
-				List<WebElement> tabs = driver.findElements(By.cssSelector("ul[class='nav nav-tabs']>li"));
-				 List<WebElement> allTabs = Lists.reverse(tabs);
-				for(WebElement tab : allTabs){
-					System.out.println("Element not visible. Get next TAB for search:");
-					if(tab.isDisplayed())
-					tab.click();
-					if(element.isDisplayed())
-						break;
+			if(!element.isDisplayed()){	
+				String label;
+				if(element.getTagName().equals("section"))
+					label = js.getHiddenLabel(element.findElement(By.xpath(".//h3")));									
+				else
+					label = js.getHiddenLabel(element.findElement(By.xpath("./ancestor::section[@class='form-group nav-item']/h3/a")));
+				
+				if(ws.getPC()>-1){
+					List<WebElement> tabs = driver.findElements(By.xpath("//*[@additional-view][last()]//ul[@class='nav nav-tabs']//a[normalize-space(text())=\""+label+"\"]"));					
+					isDisplayedTabs(tabs);
 				}
+				else{
+					List<WebElement> tabs = driver.findElements(By.xpath("//ul[@class='nav nav-tabs']//a[normalize-space(text())=\""+label+"\"]"));
+					isDisplayedTabs(tabs);
+				}
+				
+				
+				
+//				List<WebElement> tabs = driver.findElements(By.cssSelector("ul[class='nav nav-tabs']>li"));
+//				 List<WebElement> allTabs = Lists.reverse(tabs);
+//				for(WebElement tab : allTabs){
+//					System.out.println("Element not visible. Get next TAB for search:");
+//					if(tab.isDisplayed())
+//					tab.click();
+//					if(element.isDisplayed())
+//						break;
+//				}
 			 }
 			
 		}catch(Exception e) {
@@ -81,6 +98,14 @@ public abstract class Page {
 		}	
 		return element;
 		
+	}
+
+	private void isDisplayedTabs(List<WebElement> allTabs) {
+		for(WebElement tab : allTabs){
+			System.out.println("Element not visible. Get next TAB for search:");
+			if(tab.isDisplayed())
+			tab.click();
+		}
 	}
 	
 	protected boolean isElementPresent(By by) {	

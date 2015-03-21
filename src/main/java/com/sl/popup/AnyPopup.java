@@ -23,6 +23,22 @@ public abstract class AnyPopup extends AnyForm {
 		super(pageManager);
 	}
 	
+	
+	
+	public void close() {
+		closePopup();
+	}
+	@Override
+	public AnyForm save() {
+		savePopup();
+		return this;
+	}
+	@Override
+	public AnyForm create(){		
+		addPopup();
+		return this;
+	}
+	
 	protected void addPopup(){		
 		wfe.waitEnableButton(addPopup);
 		addPopup.click();

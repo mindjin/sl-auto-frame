@@ -3,6 +3,7 @@ package com.sl.test;
 import static com.sl.utils.DataProviderUtils.GENERIC_DP;
 import static org.testng.Assert.assertEquals;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -19,9 +20,10 @@ import com.sl.utils.ElementScreenshot;
 public class TestPromo extends ConfigBase {
 	
 
-	@Entity(entity=PromoactionsDB.class, ids=1)
+	@Entity(entity=PromoactionsDB.class, ids=1)	
 	@Test(dataProviderClass = DataProviderUtils.class, dataProvider = GENERIC_DP)
 	public void savePromoWithFillForm(PromoactionsDB promo) throws Exception{
+		
 		rndNum =RandomValues.rndNumb(999999);
 		promo.setName("UI_Test_Promoactions_"+rndNum);
 		app.getNavigationHelper().openPage(Menu.PROMOACTIONS);

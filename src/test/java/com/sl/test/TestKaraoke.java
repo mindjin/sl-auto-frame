@@ -37,6 +37,7 @@ public class TestKaraoke extends ConfigBase{
 
 	}
 	
+	
 	@Entity(entity=AssetsDB.class, ids=1)
 	@Test(dataProviderClass = DataProviderUtils.class, dataProvider = GENERIC_DP)
 		public void createAssetsWithFillForm(AssetsDB assets) throws Exception{				

@@ -40,9 +40,7 @@ public class SerialsDB extends BaseEntity{
 	@Column
 	private String review;
 	@Column
-	private String countries;
-	@Column
-	private String contentBundles;
+	private String countries;	
 	@Column
 	private String seriesPackages;
 	@Column
@@ -175,13 +173,6 @@ public class SerialsDB extends BaseEntity{
 	}
 	public SerialsDB setCountries(String countries) {
 		this.countries = countries;
-		return this;
-	}
-	public String getContentBundles() {
-		return contentBundles;
-	}
-	public SerialsDB setContentBundles(String contentBundles) {
-		this.contentBundles = contentBundles;
 		return this;
 	}
 	public String getSeriesPackages() {
@@ -347,7 +338,6 @@ public class SerialsDB extends BaseEntity{
 //				"reviewDate : " + getReviewDate() + ";\n" +
 				"review : " + getReview() + ";\n" +
 				"countries : " + getCountries() + ";\n" +
-				"contentBundles : " + getContentBundles() + ";\n" +
 				"seriesPackages : " + getSeriesPackages() + ";\n" +
 				"contentBundleGroups : " + getContentBundleGroups() + ";\n" +
 				"contentBundleGenres : " + getContentBundleGenres() + ";\n" +

@@ -1,11 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >  
 <suite name="SmokeTest" verbose="1" >  
-
    <test name="Season" >
+    <classes>
+       <class name="com.sl.test.TestSeason" />              
+    </classes>  
+  </test>
+  <test name="Karaoke" >
+    <classes>
+       <class name="com.sl.test.TestKaraoke" />              
+    </classes>  
+  </test>
+  <test name="TestPromo" >
     <classes>
        <class name="com.sl.test.TestPromo" />              
     </classes>  
   </test>
-  
+  <test name="Serials" >
+    <classes>
+       <class name="com.sl.test.TestSerials" />              
+    </classes>  
+  </test>
+  <test name="BroadcastChannel" >
+    <classes>
+       <class name="com.sl.test.TestBroadcastChannel" />              
+    </classes>  
+  </test>  
+   <test name="Videomovies" >
+    <classes>
+       <class name="com.sl.test.TestVideomovies" />              
+    </classes>  
+  </test>    
 </suite>

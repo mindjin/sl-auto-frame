@@ -2,6 +2,7 @@ package com.sl.test;
 
 import static com.sl.utils.DataProviderUtils.GENERIC_DP;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -20,11 +21,24 @@ import com.sl.utils.ElementScreenshot;
 @Listeners(ElementScreenshot.class)
 public class TestSerials extends ConfigBase{
 	
+	@Test
+	public void checkSeason(){
+		rndNum = RandomValues.rndNumb(999999);
+		app.getNavigationHelper().openPage(Menu.SERIALS);
+		pageManager.homePage.addForm();	
+		pageManager.serials
+		.setName("UI_Test_Serials_"+rndNum)		
+		.setLocations("Московский").addSeason().setSeasons("wp_Serials").create().createAndClose();
+		app.getHomePageHelper().openForm("UI_Test_Serials_"+rndNum);		
+		assertTrue(pageManager.serials.getSeason().equals("wp_Serials"));
+		
+	}
+	
 	@Entity(entity=SerialsDB.class, ids = 1)
 	@Test(dataProviderClass=DataProviderUtils.class, dataProvider=GENERIC_DP)
 	public void createNewSeason(SerialsDB serials){
 		rndNum =RandomValues.rndNumb(999999);
-		serials.setName("UI_Test_Karaoke"+rndNum);
+		serials.setName("UI_Test_Serials"+rndNum);
 		app.getNavigationHelper().openPage(Menu.SERIALS);
 		app.getHomePageHelper().addForm();
 		pageManager.serials.fillForm(serials).createAndClose();
@@ -38,7 +52,7 @@ public class TestSerials extends ConfigBase{
 	@Test(dataProviderClass=DataProviderUtils.class, dataProvider=GENERIC_DP)
 	public void verifySaveAndClose(SerialsDB serials){
 		rndNum =RandomValues.rndNumb(999999);	
-		serials.setName("UI_Test_Karaoke"+rndNum);
+		serials.setName("UI_Test_Serials"+rndNum);
 		app.getNavigationHelper().openPage(Menu.SERIALS);
 		app.getHomePageHelper().addForm();
 		pageManager.serials.setName(rndNum).setLocations("Московский").createAndClose();
