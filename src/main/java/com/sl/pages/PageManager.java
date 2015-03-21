@@ -20,13 +20,13 @@ import com.sl.popup.OttPreviewAssets;
 import com.sl.popup.OttURL;
 import com.sl.popup.ParamCopy;
 import com.sl.popup.PreviewAssets;
+import com.sl.popup.SeasonsPopup;
 import com.sl.popup.Subtitles;
 import com.sl.utils.Checkbox;
 import com.sl.utils.Combobox;
 import com.sl.utils.Finder;
 import com.sl.utils.LinkedList;
 import com.sl.utils.List2List;
-import com.sl.utils.List2ListTree;
 
 public class PageManager {
 	
@@ -54,11 +54,7 @@ public enum Form{
 	CONTENTCONTRACTS("contentContracts"),
 	SEASONS("seasons"),
 	SERIALS("serials"),
-	BANNERS("banners"),
-	BUNDLEPACKS("bundlePacks"),
-	SERVICEPLANS("servicePlans");
-	
-	
+	SEASONSPOPUP("seasonsPopup");
 		Form(String text){
 			this.text = text;
 		}
@@ -89,9 +85,7 @@ public ContentContracts contentContracts;
 public Seasons seasons;
 public RentalWindows rentalWindows;
 public Serials serials;
-public Banners banners;
-public BundlePacks bundlePacks;
-public ServicePlans servicePlans;
+public SeasonsPopup seasonsPopup;
 
 public HomePage homePage;
 public ParamCopy paramCopy;
@@ -102,8 +96,9 @@ private List2List list2List;
 private Combobox combobox;
 private Checkbox checkbox;
 private LinkedList linkedList;
-private List2ListTree list2listTree;
 private LinkedId linkedId;
+
+
 
 
 
@@ -135,10 +130,7 @@ private LinkedId linkedId;
 		seasons = initElements(new Seasons(this));
 		rentalWindows = initElements(new RentalWindows(this));
 		serials = initElements(new Serials(this));
-		banners = initElements(new Banners(this));
-		bundlePacks = initElements(new BundlePacks(this));
-		servicePlans = initElements(new ServicePlans(this));
-		
+		seasonsPopup = initElements(new SeasonsPopup(this));
 	}
 	
 	
@@ -158,10 +150,6 @@ private LinkedId linkedId;
 				  list2List = new List2List(this, element);
 			  return list2List;
 			 
-		  }
-		  public List2ListTree getList2ListTree(WebElement element){				 
-			  list2listTree = new List2ListTree(this, element);
-		  return list2listTree;
 		  }
 		  
 		  public Combobox getCombobox(WebElement element){

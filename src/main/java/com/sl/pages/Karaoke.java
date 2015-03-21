@@ -18,7 +18,7 @@ public class Karaoke extends AnyForm{
 	protected  WebElement states_Locations;
 	
 	@FindBy(css = "section[name='row.__states.Genres']")
-	protected   WebElement states_Genres;
+	  WebElement states_Genres;
 	
 	@FindBy(css = "[id='RowForm'] section[name='row.__states.KaraokePackages']")
 	protected  WebElement states_KaraokePackages;
@@ -46,7 +46,9 @@ public class Karaoke extends AnyForm{
  	
  	@FindBy(css = "[id='RowForm'] [id='row.ownerId']")
  	protected WebElement row_ownerId;
- 	 	 	
+ 	
+ 	
+ 	
  	@FindBy(css = "[id='RowForm'] [id='row.externalId']")
  	protected WebElement row_externalId;
  	

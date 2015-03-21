@@ -25,7 +25,7 @@ public class LoginPage extends Page{
 	}
 	
 	public LoginPage setLogin(String value){
-		type(login, value);
+		type(login, value);		
 		return this;
 	}
 	

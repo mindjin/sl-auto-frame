@@ -1,10 +1,12 @@
 package com.sl.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import com.sl.model.SerialsDB;
 import com.sl.popup.ContentContracts;
+import com.sl.popup.SeasonsPopup;
 
 public class Serials extends AnyForm {
 
@@ -48,7 +50,7 @@ public class Serials extends AnyForm {
 	private WebElement list2list_countries;
 	
 	@FindBy(css = "[id='RowForm'] section[name='row.__states.ContentBundles']")
-	private WebElement list2list_contentBundles;
+	private WebElement linkedlist_contentBundles;
 	
 	@FindBy(css = "[id='RowForm'] section[name='row.__states.SeriesPackages']")
 	private WebElement list2list_seriesPackages;
@@ -156,6 +158,18 @@ public class Serials extends AnyForm {
 		return pageManager.rentalWindows;
 	}
 	
+	public SeasonsPopup addSeason(){
+		pageManager.getLinkedList(linkedlist_contentBundles).add();
+		return pageManager.seasonsPopup;
+	}
+	
+	public String getSeason(){
+		String value = insideTab(linkedlist_contentBundles)
+				.findElement(By.cssSelector("td[value='row.childID_name']"))
+				.getAttribute("title");
+		return value;
+	}
+	
 	public Serials fillForm(SerialsDB serials){
 		setTextfieldKeys(textfield_name, serials.getName());
 		setTextfieldKeys(textfield_year, serials.getYear());
@@ -170,7 +184,6 @@ public class Serials extends AnyForm {
 		setTextfieldKeys(textfield_reviewDate, serials.getReviewDate());
 		setTextfieldKeys(textfield_review, serials.getReview());
 		setList2listKeys(list2list_countries, serials.getCountries());
-		setList2listKeys(list2list_contentBundles, serials.getContentBundles());
 		setList2listKeys(list2list_seriesPackages, serials.getSeriesPackages());
 		setList2listKeys(list2list_contentBundleGroups, serials.getContentBundleGroups());
 		setList2listKeys(list2list_contentBundleGenres, serials.getContentBundleGenres());
@@ -210,7 +223,6 @@ public class Serials extends AnyForm {
 			serials.setReviewDate(insideTab(textfield_reviewDate).getAttribute("value")); 
 			serials.setReview(insideTab(textfield_review).getAttribute("value")); 
 			serials.setCountries(pageManager.getList2List(list2list_countries).getValue()); 
-			serials.setContentBundles(pageManager.getList2List(list2list_contentBundles).getValue()); 
 			serials.setSeriesPackages(pageManager.getList2List(list2list_seriesPackages).getValue()); 
 			serials.setContentBundleGroups(pageManager.getList2List(list2list_contentBundleGroups).getValue()); 
 			serials.setContentBundleGenres(pageManager.getList2List(list2list_contentBundleGenres).getValue()); 

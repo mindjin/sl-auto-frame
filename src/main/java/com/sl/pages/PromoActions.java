@@ -61,11 +61,6 @@ public class PromoActions extends AnyForm {
 	@FindBy(css="[id='RowForm'] section[name='row.__states.MessageFilters']")
 	 protected WebElement states_messageFilters;
 	
-	@FindBy(xpath="//*[@id='RowForm']//section[@name='row.__states.ServiceSpecs']")
-	protected WebElement list2list_services;
-		
-	@FindBy(xpath="//*[@id='RowForm']//section[@name='row.__states.ServiceSpecs' ]//ul[normalize-space(.)='wp51']//input")
-	protected WebElement add_services;
 
 	public PromoActions(PageManager pageManager) {
 		super(pageManager);	
@@ -80,6 +75,7 @@ public class PromoActions extends AnyForm {
 	public PromoActions setSorting(String value) {
 		type(row_sortOrder, value);	
 		return this;
+		
 	}
 	
 	public PromoActions setMessegeFilters(String value){
@@ -87,13 +83,10 @@ public class PromoActions extends AnyForm {
 		return this;
 	}
 	
-	public PromoActions setEditServices(String value) {
-		pageManager.getList2ListTree(list2list_services).addValue(value);	
-		return this;
-		
-		
-	}
-
+	
+	
+	
+	
 	@Step
 	public PromoActions fillForm(PromoactionsDB promo){
 		setTextfieldKeys(row_name, promo.getName());
@@ -112,9 +105,6 @@ public class PromoActions extends AnyForm {
 		setTextfieldKeys(row_description, promo.getDescription());
 		setTextfieldKeys(row_notifyStartText, promo.getNotifyStartText());
 		setTextfieldKeys(row_notifyText, promo.getNotifyText());
-		setTextfieldKeys(add_services, promo.getNotifyText());
-		
-		
 		return this;
 	}
 	
@@ -137,7 +127,6 @@ public class PromoActions extends AnyForm {
 		promo.setDescription(insideTab(row_description).getAttribute("value"));
 		promo.setNotifyStartText(insideTab(row_notifyStartText).getAttribute("value"));
 		promo.setNotifyText(insideTab(row_notifyText).getAttribute("value"));
-		promo.setNotifyText(insideTab(add_services).getAttribute("value"));
 		return promo;
 	}
 	

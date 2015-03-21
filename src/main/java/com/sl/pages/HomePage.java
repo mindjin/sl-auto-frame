@@ -31,13 +31,6 @@ public class HomePage extends Page{
 	protected WebElement contentBundle;
 	@FindBy(css="[href='Series/list']")
 	protected WebElement series;
-	@FindBy(css="[href='PromoContent/list']")
-	protected WebElement banners;
-	@FindBy(css="[href='BundlePackage/list']")
-	protected WebElement bundlepacks;
-	@FindBy(css="[href='ProductOffer/list']")
-	protected WebElement servicePlans;
-	
 	
 	@FindBy(css="[id='ListFilters'] [id='row.name']")
 	protected WebElement name;	
@@ -66,10 +59,7 @@ public class HomePage extends Page{
 		VIDEOMOVIE("videoMovie"),
 		VODPACKAGE("vodPackage"), 
 		SEASONS("contentBundle"),
-		SERIALS("series"),
-		BANNERS("banners"), 
-		BUNDLEPACKS("bundlepacks"), //пакеты услуг
-		SERVICEPLANS("servicePlans"); //тарифные планы
+		SERIALS("series");
 		Menu(String text){
 			this.text = text;
 		}

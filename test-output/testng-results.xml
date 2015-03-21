@@ -1,41 +1,501 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" total="24" passed="24">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="21449" started-at="2015-03-20T13:15:03Z" finished-at="2015-03-20T13:15:25Z">
+  <suite name="Default suite" duration-ms="1312731" started-at="2015-03-20T08:08:00Z" finished-at="2015-03-20T08:29:52Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="21449" started-at="2015-03-20T13:15:03Z" finished-at="2015-03-20T13:15:25Z">
-      <class name="com.sl.test.TestServicePlans">
-        <test-method status="PASS" signature="init()[pri:0, instance:com.sl.test.TestServicePlans@f0f2775]" name="init" is-config="true" duration-ms="3841" started-at="2015-03-20T16:15:03Z" finished-at="2015-03-20T16:15:07Z">
+    <test name="Default test" duration-ms="1312731" started-at="2015-03-20T08:08:00Z" finished-at="2015-03-20T08:29:52Z">
+      <class name="com.sl.test.TestVideomovies">
+        <test-method status="PASS" signature="init()[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="init" is-config="true" duration-ms="4542" started-at="2015-03-20T11:08:00Z" finished-at="2015-03-20T11:08:04Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method status="PASS" signature="verifySaveAndClose(com.sl.model.ServicePlansDB)[pri:0, instance:com.sl.test.TestServicePlans@f0f2775]" name="verifySaveAndClose" duration-ms="15819" started-at="2015-03-20T16:15:09Z" data-provider="genericDP" finished-at="2015-03-20T16:15:25Z">
+        <test-method status="PASS" signature="createAssetsOTTWithFillForm(com.sl.model.AssetsOttDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createAssetsOTTWithFillForm" duration-ms="37504" started-at="2015-03-20T11:08:06Z" data-provider="genericDP" finished-at="2015-03-20T11:08:44Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[name : UI_Test_ServicePlan_560389;
-startDate : 20.03.2014 00:00:00;
-endDate : 20.03.2019 00:00:00;
-status : WP_StatusOfTariffPlans;
-serviceProvider : Тестовые учетные записи;
-currency : Рубли;
-externalId : 427751254;
-nonBlockedPacks : 222;
-isTest : 1;
-]]>
+                <![CDATA[[name : UI_Test_AssetsOtt_gamtw17t01;
+assetType : Blu-Ray;
+bitrate : 2885.00;
+containerType : UI_Test_AssetsOtt_y9shsa87jz;
+status : Blocked;
+isCrypted : 1;
+isDeleted : 1;
+transport : WP UDP;
+Locations : Московский;
+]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifySaveAndClose -->
-        <test-method status="PASS" signature="stop()[pri:0, instance:com.sl.test.TestServicePlans@f0f2775]" name="stop" is-config="true" duration-ms="99" started-at="2015-03-20T16:15:25Z" finished-at="2015-03-20T16:15:25Z">
+        </test-method> <!-- createAssetsOTTWithFillForm -->
+        <test-method status="PASS" signature="createAssetsOTTWithFillFormAndSave(com.sl.model.AssetsOttDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createAssetsOTTWithFillFormAndSave" duration-ms="41846" started-at="2015-03-20T11:08:44Z" data-provider="genericDP" finished-at="2015-03-20T11:09:26Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[name : UI_Test_AssetsOtt_gamtw17t01;
+assetType : Blu-Ray;
+bitrate : 2885.00;
+containerType : UI_Test_AssetsOtt_y9shsa87jz;
+status : Blocked;
+isCrypted : 1;
+isDeleted : 1;
+transport : WP UDP;
+Locations : Московский;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createAssetsOTTWithFillFormAndSave -->
+        <test-method status="PASS" signature="createAssetsWithFillForm(com.sl.model.AssetsDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createAssetsWithFillForm" duration-ms="33672" started-at="2015-03-20T11:09:26Z" data-provider="genericDP" finished-at="2015-03-20T11:09:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[name : UI_Test_Assets_gamtw17t01;
+smExternalId : UI_Test_Assets_mvjhd7ibwe;
+assetType : Blu-Ray;
+bitrate : 2885.00;
+containerType : UI_Test_Assets_y9shsa87jz;
+status : Blocked;
+priority : Нормальный;
+isCrypted : 1;
+isDeleted : 1;
+transport : WP UDP;
+avalabiltyOnVideoServers : Московский;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createAssetsWithFillForm -->
+        <test-method status="PASS" signature="createAssetsWithFillFormAndSave(com.sl.model.AssetsDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createAssetsWithFillFormAndSave" duration-ms="57457" started-at="2015-03-20T11:09:59Z" data-provider="genericDP" finished-at="2015-03-20T11:10:57Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[name : UI_Test_Assets_gamtw17t01;
+smExternalId : UI_Test_Assets_mvjhd7ibwe;
+assetType : Blu-Ray;
+bitrate : 2885.00;
+containerType : UI_Test_Assets_y9shsa87jz;
+status : Blocked;
+priority : Нормальный;
+isCrypted : 1;
+isDeleted : 1;
+transport : WP UDP;
+avalabiltyOnVideoServers : Московский;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createAssetsWithFillFormAndSave -->
+        <test-method status="PASS" signature="createAudioPIDWithFillForm(com.sl.model.AudioPidDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createAudioPIDWithFillForm" duration-ms="38623" started-at="2015-03-20T11:10:57Z" data-provider="genericDP" finished-at="2015-03-20T11:11:35Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[name : UI_Test_AudioPid_gamtw17t01;
+PID : 1595;
+audioPIDType : WP PID;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createAudioPIDWithFillForm -->
+        <test-method status="PASS" signature="createAudioPIDWithFillFormAndSave(com.sl.model.AudioPidDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createAudioPIDWithFillFormAndSave" duration-ms="47429" started-at="2015-03-20T11:11:35Z" data-provider="genericDP" finished-at="2015-03-20T11:12:23Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[name : UI_Test_AudioPid_gamtw17t01;
+PID : 1595;
+audioPIDType : WP PID;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createAudioPIDWithFillFormAndSave -->
+        <test-method status="PASS" signature="createAudioPIDinAssetsOTTWithFillForm(com.sl.model.AudioPidDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createAudioPIDinAssetsOTTWithFillForm" duration-ms="43383" started-at="2015-03-20T11:12:23Z" data-provider="genericDP" finished-at="2015-03-20T11:13:06Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[name : UI_Test_AudioPid_gamtw17t01;
+PID : 1595;
+audioPIDType : WP PID;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createAudioPIDinAssetsOTTWithFillForm -->
+        <test-method status="PASS" signature="createAudioPIDinAssetsOTTWithFillFormAndSave(com.sl.model.AudioPidDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createAudioPIDinAssetsOTTWithFillFormAndSave" duration-ms="57130" started-at="2015-03-20T11:13:06Z" data-provider="genericDP" finished-at="2015-03-20T11:14:03Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[name : UI_Test_AudioPid_gamtw17t01;
+PID : 1595;
+audioPIDType : WP PID;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createAudioPIDinAssetsOTTWithFillFormAndSave -->
+        <test-method status="PASS" signature="createAudioPIDinAssetsWithFillForm(com.sl.model.AudioPidDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createAudioPIDinAssetsWithFillForm" duration-ms="43974" started-at="2015-03-20T11:14:03Z" data-provider="genericDP" finished-at="2015-03-20T11:14:47Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[name : UI_Test_AudioPid_gamtw17t01;
+PID : 1595;
+audioPIDType : WP PID;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createAudioPIDinAssetsWithFillForm -->
+        <test-method status="PASS" signature="createAudioPIDinAssetsWithFillFormAndSave(com.sl.model.AudioPidDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createAudioPIDinAssetsWithFillFormAndSave" duration-ms="56464" started-at="2015-03-20T11:14:47Z" data-provider="genericDP" finished-at="2015-03-20T11:15:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[name : UI_Test_AudioPid_gamtw17t01;
+PID : 1595;
+audioPIDType : WP PID;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createAudioPIDinAssetsWithFillFormAndSave -->
+        <test-method status="PASS" signature="createAudioPIDinOttPreviewAssetsWithFillFormandSave(com.sl.model.AudioPidDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createAudioPIDinOttPreviewAssetsWithFillFormandSave" duration-ms="55317" started-at="2015-03-20T11:15:44Z" data-provider="genericDP" finished-at="2015-03-20T11:16:39Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[name : UI_Test_AudioPid_gamtw17t01;
+PID : 1595;
+audioPIDType : WP PID;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createAudioPIDinOttPreviewAssetsWithFillFormandSave -->
+        <test-method status="PASS" signature="createAudioPIDinPreviewAssetsOTTWithFillForm(com.sl.model.AudioPidDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createAudioPIDinPreviewAssetsOTTWithFillForm" duration-ms="42734" started-at="2015-03-20T11:16:39Z" data-provider="genericDP" finished-at="2015-03-20T11:17:22Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[name : UI_Test_AudioPid_gamtw17t01;
+PID : 1595;
+audioPIDType : WP PID;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createAudioPIDinPreviewAssetsOTTWithFillForm -->
+        <test-method status="PASS" signature="createAudioPIDinPreviewAssetsWithFillForm(com.sl.model.AudioPidDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createAudioPIDinPreviewAssetsWithFillForm" duration-ms="42747" started-at="2015-03-20T11:17:22Z" data-provider="genericDP" finished-at="2015-03-20T11:18:05Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[name : UI_Test_AudioPid_gamtw17t01;
+PID : 1595;
+audioPIDType : WP PID;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createAudioPIDinPreviewAssetsWithFillForm -->
+        <test-method status="PASS" signature="createAudioPIDinPreviewAssetsWithFillFormAndSave(com.sl.model.AudioPidDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createAudioPIDinPreviewAssetsWithFillFormAndSave" duration-ms="55746" started-at="2015-03-20T11:18:05Z" data-provider="genericDP" finished-at="2015-03-20T11:19:00Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[name : UI_Test_AudioPid_gamtw17t01;
+PID : 1595;
+audioPIDType : WP PID;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createAudioPIDinPreviewAssetsWithFillFormAndSave -->
+        <test-method status="PASS" signature="createContentContractsPurchaseWithFillForm(com.sl.model.ContentInPurchaseMDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createContentContractsPurchaseWithFillForm" duration-ms="36591" started-at="2015-03-20T11:19:00Z" data-provider="genericDP" finished-at="2015-03-20T11:19:37Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[purchaseMethod : Подписка;
+sort : 7573;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createContentContractsPurchaseWithFillForm -->
+        <test-method status="PASS" signature="createContentContractsPurchaseWithFillFormAndSave(com.sl.model.ContentInPurchaseMDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createContentContractsPurchaseWithFillFormAndSave" duration-ms="49801" started-at="2015-03-20T11:19:37Z" data-provider="genericDP" finished-at="2015-03-20T11:20:27Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[purchaseMethod : Подписка;
+sort : 7573;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createContentContractsPurchaseWithFillFormAndSave -->
+        <test-method status="PASS" signature="createContentContractsWithFillForm(com.sl.model.ContentContractsDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createContentContractsWithFillForm" duration-ms="62160" started-at="2015-03-20T11:20:27Z" data-provider="genericDP" finished-at="2015-03-20T11:21:29Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[contractor : WP_contragent;
+currency : Иена;
+fixPaymentSumm : 2 632,00;
+isContractBlockRules : 1;
+isLicenseExclusive : 1;
+minGarantySumm : 4 558,00;
+royalty : 3781;
+vatSumm : 1 171,00;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createContentContractsWithFillForm -->
+        <test-method status="PASS" signature="createContentContractsWithFillFormAndSave(com.sl.model.ContentContractsDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createContentContractsWithFillFormAndSave" duration-ms="59920" started-at="2015-03-20T11:21:29Z" data-provider="genericDP" finished-at="2015-03-20T11:22:29Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[contractor : WP_contragent;
+currency : Иена;
+fixPaymentSumm : 2 632,00;
+isContractBlockRules : 1;
+isLicenseExclusive : 1;
+minGarantySumm : 4 558,00;
+royalty : 3781;
+vatSumm : 1 171,00;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createContentContractsWithFillFormAndSave -->
+        <test-method status="PASS" signature="createOttPreviewAssetsWithFillFormandSave(com.sl.model.OttPreviewAssetsDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createOttPreviewAssetsWithFillFormandSave" duration-ms="53745" started-at="2015-03-20T11:22:29Z" data-provider="genericDP" finished-at="2015-03-20T11:23:23Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[bitrate : 2885.00;
+containerType : UI_Test_PreviewAssets_y9shsa87jz;
+isCrypted : 1;
+name : UI_Test_Videomovies_gamtw17t01;
+status : Blocked;
+transport : WP UDP;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createOttPreviewAssetsWithFillFormandSave -->
+        <test-method status="PASS" signature="createPreviewAssetsOTTWithFillForm(com.sl.model.OttPreviewAssetsDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createPreviewAssetsOTTWithFillForm" duration-ms="44006" started-at="2015-03-20T11:23:23Z" data-provider="genericDP" finished-at="2015-03-20T11:24:07Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[bitrate : 2885.00;
+containerType : UI_Test_PreviewAssets_y9shsa87jz;
+isCrypted : 1;
+name : UI_Test_Videomovies_gamtw17t01;
+status : Blocked;
+transport : WP UDP;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createPreviewAssetsOTTWithFillForm -->
+        <test-method status="PASS" signature="createPreviewAssetsWithFillForm(com.sl.model.PreviewAssetsDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createPreviewAssetsWithFillForm" duration-ms="43804" started-at="2015-03-20T11:24:07Z" data-provider="genericDP" finished-at="2015-03-20T11:24:50Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[bitrate : 2885.00;
+containerType : UI_Test_PreviewAssets_y9shsa87jz;
+isCrypted : 1;
+priority : Нормальный;
+status : Blocked;
+transport : WP UDP;
+name : UI_Test_Videomovies_gamtw17t01;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createPreviewAssetsWithFillForm -->
+        <test-method status="PASS" signature="createPreviewAssetsWithFillFormAndSave(com.sl.model.PreviewAssetsDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="createPreviewAssetsWithFillFormAndSave" duration-ms="53143" started-at="2015-03-20T11:24:50Z" data-provider="genericDP" finished-at="2015-03-20T11:25:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[bitrate : 2885.00;
+containerType : UI_Test_PreviewAssets_y9shsa87jz;
+isCrypted : 1;
+priority : Нормальный;
+status : Blocked;
+transport : WP UDP;
+name : UI_Test_Videomovies_gamtw17t01;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createPreviewAssetsWithFillFormAndSave -->
+        <test-method status="PASS" signature="fillMoviesForm(com.sl.model.VideomoviesDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="fillMoviesForm" duration-ms="117028" started-at="2015-03-20T11:25:44Z" data-provider="genericDP" finished-at="2015-03-20T11:27:41Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[name : UI_Test_Videomovies_972755;
+year : UI_Test_Videomovies_y6menfdkun;
+director : UI_Test_Videomovies_amxnylokdp;
+actors : UI_Test_Videomovies_xp2301k8zs;
+newDays : 8261;
+countries : Франция;
+reviewTitle : UI_Test_Videomovies_80hy088fuo;
+review : UI_Test_Videomovies_5mgyg1id55;
+genres : Классика;
+vodPackages : WP_VoD-package;
+estVodPackages : WP_EST-package;
+vodGroups : WP_groupVOD;
+locations : Московский;
+licenseType2 : EST;
+categoryABCDE : WP_Category;
+originalLang : UI_Test_Videomovies_nzagsn9ipj;
+isDubbedNeeded : 1;
+dubbedInfo : UI_Test_Videomovies_p1oq9mialp;
+contractProgramType : WP_types_of_programs;
+licenseYear : 5242;
+contentBundles : wp_GP_first;
+originalName : UI_Test_Videomovies_0ycpi90ye0;
+accessLevel : 18+;
+ageLevel : 18+;
+genre : Фантастика;
+rating : 10.0;
+KinopoiskRating : 4829.00;
+kinopoiskId : UI_Test_Videomovies_rwie7wkfg6;
+imdbRating : 2229.00;
+item : 5596;
+appleId : UI_Test_Videomovies_wiq9a62mjy;
+androidId : UI_Test_Videomovies_9u8d7w7jnx;
+smarttvId : UI_Test_Videomovies_tanswijhb6;
+type3d : вертикальная стереопара;
+adminDsc : UI_Test_Videomovies_4qy213lwrb;
+showcase : wp_podvitrina;
+bonusPriceCategory : wp_typePrice;
+distributionCertificate : UI_Test_Videomovies_j16eilanxh;
+isRecommended : 1;
+ottRecomended : 1;
+deleteOnEndDate : 1;
+notifySub : 1;
+showAsVod : 1;
+description : UI_Test_Videomovies_3dng32w7wx;
+isCrypted : 1;
+isErotic : 1;
+isNextEpisode : 1;
+deleteEst : 1;
+ownerId : UI_Test_Videomovies_cmju6quo5b;
+isLastEpisode : 1;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillMoviesForm -->
+        <test-method status="PASS" signature="fillMoviesFormAndSave(com.sl.model.VideomoviesDB)[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="fillMoviesFormAndSave" duration-ms="131617" started-at="2015-03-20T11:27:41Z" data-provider="genericDP" finished-at="2015-03-20T11:29:52Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[name : UI_Test_Videomovies_884908;
+year : UI_Test_Videomovies_y6menfdkun;
+director : UI_Test_Videomovies_amxnylokdp;
+actors : UI_Test_Videomovies_xp2301k8zs;
+newDays : 8261;
+countries : Франция;
+reviewTitle : UI_Test_Videomovies_80hy088fuo;
+review : UI_Test_Videomovies_5mgyg1id55;
+genres : Классика;
+vodPackages : WP_VoD-package;
+estVodPackages : WP_EST-package;
+vodGroups : WP_groupVOD;
+locations : Московский;
+licenseType2 : EST;
+categoryABCDE : WP_Category;
+originalLang : UI_Test_Videomovies_nzagsn9ipj;
+isDubbedNeeded : 1;
+dubbedInfo : UI_Test_Videomovies_p1oq9mialp;
+contractProgramType : WP_types_of_programs;
+licenseYear : 5242;
+contentBundles : wp_GP_first;
+originalName : UI_Test_Videomovies_0ycpi90ye0;
+accessLevel : 18+;
+ageLevel : 18+;
+genre : Фантастика;
+rating : 10.0;
+KinopoiskRating : 4829.00;
+kinopoiskId : UI_Test_Videomovies_rwie7wkfg6;
+imdbRating : 2229.00;
+item : 5596;
+appleId : UI_Test_Videomovies_wiq9a62mjy;
+androidId : UI_Test_Videomovies_9u8d7w7jnx;
+smarttvId : UI_Test_Videomovies_tanswijhb6;
+type3d : вертикальная стереопара;
+adminDsc : UI_Test_Videomovies_4qy213lwrb;
+showcase : wp_podvitrina;
+bonusPriceCategory : wp_typePrice;
+distributionCertificate : UI_Test_Videomovies_j16eilanxh;
+isRecommended : 1;
+ottRecomended : 1;
+deleteOnEndDate : 1;
+notifySub : 1;
+showAsVod : 1;
+description : UI_Test_Videomovies_3dng32w7wx;
+isCrypted : 1;
+isErotic : 1;
+isNextEpisode : 1;
+deleteEst : 1;
+ownerId : UI_Test_Videomovies_cmju6quo5b;
+isLastEpisode : 1;
+]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillMoviesFormAndSave -->
+        <test-method status="PASS" signature="stop()[pri:0, instance:com.sl.test.TestVideomovies@3f200884]" name="stop" is-config="true" duration-ms="447" started-at="2015-03-20T11:29:53Z" finished-at="2015-03-20T11:29:53Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- stop -->
-      </class> <!-- com.sl.test.TestServicePlans -->
+      </class> <!-- com.sl.test.TestVideomovies -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

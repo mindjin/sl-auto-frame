@@ -31,5 +31,14 @@ public class JavaScripts {
 		executor.executeScript(script);
 		
 	}
+	
+	public String getHiddenLabel(WebElement element){
+		
+		String script = "return arguments[0].textContent";
+		String label = (String) executor.executeScript(script, element);
+		return label;
+		
+		
+	}
 
 }
